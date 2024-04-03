@@ -33,6 +33,7 @@ function App() {
         </p>
         <p>Sammy Alashoush</p>
         <p>Drew Crispino</p>
+        <p>Maanav Rao</p>
         <a
           className="App-link"
           href="https://reactjs.org"
