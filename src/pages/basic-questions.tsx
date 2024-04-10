@@ -7,6 +7,7 @@ import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+    console.log(setSelectedAnswers);
     return (
         <div>
             <div className="pb-3">
