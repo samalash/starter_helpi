@@ -6,7 +6,7 @@ function DetailedQuestionsPage() {
 
     return (
         <div>
-
+            Detailed Questions
         </div>
     );
 
