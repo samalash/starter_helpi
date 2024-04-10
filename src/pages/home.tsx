@@ -32,6 +32,7 @@ function Home() {
       </div>
       <Button href="#/basic-questions">Basic Questions</Button>
       <Button href="#/detailed-questions">Detailed Questions</Button>
+
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
