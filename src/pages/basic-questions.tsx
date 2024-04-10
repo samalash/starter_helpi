@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
+import Header from '../components/Header';
 //import { Button, Form } from 'react-bootstrap';
 
 
@@ -11,7 +12,7 @@ function BasicQuestionsPage() {
     return (
         <div>
             <div className="pb-3">
-
+            <Header/>
             </div>
             <div>
                 <div>
