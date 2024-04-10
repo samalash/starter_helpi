@@ -18,7 +18,9 @@ function Header(){
         <a className="nav-link" href="#/detailed-questions">Detailed Questions</a>
       </li>
     </ul>
+        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
     </div>
+    
 </nav>);
 }
 
