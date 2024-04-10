@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button, Form} from 'react-bootstrap';
-//import { Link } from 'react-router-dom';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -14,9 +12,7 @@ if (prevKey !== null) {
 
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  const [signedIn, setSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
-  console.log(setSignedIn);
-  // console.log(signedIn);
+  //random comment
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -29,24 +25,23 @@ function Home() {
   }
   return (
     <div className="App">
-        {/* <Link to="/basic-questions">Basic Questions</Link> */}
-      { !signedIn ? (<div>
-        <h1 className="pb-3">Our Title</h1>
-        <div className="w-50 mx-auto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed ligula nec ante vehicula dignissim vel nec ex. Sed condimentum metus vitae elit condimentum, sed hendrerit libero sodales. Integer eget arcu id ligula fringilla ullamcorper. Sed in magna nec metus viverra accumsan. Integer in augue a ligula congue eleifend non sed nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nullam ut lorem sapien. Nunc accumsan purus id tortor gravida, ut consequat quam feugiat. Sed consectetur, lorem vitae condimentum congue, nisl nulla suscipit urna, non fermentum mauris sapien non nisi. Curabitur bibendum ipsum vitae lectus sollicitudin, nec ultrices elit sodales. Nunc id elit eget tortor malesuada malesuada. Sed euismod purus nec justo vulputate, ut lacinia dui dignissim. Etiam in velit nec est scelerisque ultrices. Sed dignissim velit non tincidunt posuere.</p>
-        </div>
-      </div>) : (
-        <div>
-          <h1 className="pb-3">Welcome Back USERNAME</h1>
-          <h2 className="text-left">Here are some jobs you might be interested in:</h2>
-          <ol className="w-50 text-left">
-            <li>Hi</li>
-            <li>Hi</li>
-          </ol>
-        </div>
-      )}
-      <Button>Basic Questions</Button>
-      <Button>Detailed Questions</Button>
+      <header className="App-header">
+        {/* <img src={logo} className="App-logo" alt="logo" /> */}
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <p>Sammy Alashoush</p>
+        <p>Drew Crispino</p>
+        <p>Maanav Rao</p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
       <Form>
         <Form.Label>API Key:</Form.Label>
         <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
