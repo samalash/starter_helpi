@@ -1,27 +1,22 @@
-function Header(){
-    return(
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a className="navbar-brand" href="#">Career Helpi</a>
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-  </button>
+import { Button, Form } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav mr-auto">
-      <li className="nav-item active">
-        <a className="nav-link" href="#">Home <span className="sr-only"></span></a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#/basic-questions">Basic Questions</a>
-      </li>
-      <li className="nav-item">
-        <a className="nav-link" href="#/detailed-questions">Detailed Questions</a>
-      </li>
-    </ul>
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign In</button>
-    </div>
-    
-</nav>);
+function Header(){
+
+return(
+  <Navbar bg="primary" variant="dark">
+    <Navbar.Brand href="#">Career Helpi</Navbar.Brand>
+    <Nav className="mr-auto">
+      <Nav.Link href="#">Home</Nav.Link>
+      <Nav.Link href="#/basic-questions">Basic Questions</Nav.Link>
+      <Nav.Link href="#/detailed-questions">Detailed Questions</Nav.Link>
+    </Nav>
+
+      <Button className="ms-auto">Sign In</Button>
+
+  </Navbar>
+);
 }
 
 export default Header;
