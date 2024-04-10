@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button, Form} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -15,6 +15,7 @@ if (prevKey !== null) {
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [signedIn, setSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
+  console.log(setSignedIn);
   // console.log(signedIn);
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
