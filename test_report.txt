@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (43 ms)
+  ✕ renders learn react link (49 ms)
 
   ● renders learn react link
 
@@ -15,6 +15,47 @@ FAIL src/App.test.tsx
         [36m<div[39m
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
+          [36m<nav[39m
+            [33mclass[39m=[32m"navbar navbar-expand navbar-dark bg-primary"[39m
+          [36m>[39m
+            [36m<a[39m
+              [33mclass[39m=[32m"navbar-brand"[39m
+              [33mhref[39m=[32m"#/"[39m
+            [36m>[39m
+              [0mCareer Helpi[0m
+            [36m</a>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"mr-auto navbar-nav"[39m
+            [36m>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"nav-link"[39m
+                [33mdata-rr-ui-event-key[39m=[32m"#/"[39m
+                [33mhref[39m=[32m"#/"[39m
+              [36m>[39m
+                [0mHome[0m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"nav-link"[39m
+                [33mdata-rr-ui-event-key[39m=[32m"#/basic-questions"[39m
+                [33mhref[39m=[32m"#/basic-questions"[39m
+              [36m>[39m
+                [0mBasic Questions[0m
+              [36m</a>[39m
+              [36m<a[39m
+                [33mclass[39m=[32m"nav-link"[39m
+                [33mdata-rr-ui-event-key[39m=[32m"#/detailed-questions"[39m
+                [33mhref[39m=[32m"#/detailed-questions"[39m
+              [36m>[39m
+                [0mDetailed Questions[0m
+              [36m</a>[39m
+            [36m</div>[39m
+            [36m<button[39m
+              [33mclass[39m=[32m"ms-auto btn btn-primary"[39m
+              [33mtype[39m=[32m"button"[39m
+            [36m>[39m
+              [0mSign In[0m
+            [36m</button>[39m
+          [36m</nav>[39m
           [36m<h1[39m
             [33mclass[39m=[32m"pb-3"[39m
           [36m>[39m
@@ -89,22 +130,23 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   25.92 |    16.66 |   22.22 |   25.92 |                   
+All files                    |   28.57 |    16.66 |      30 |   28.57 |                   
  src                         |    8.33 |        0 |   33.33 |    8.33 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/components              |       0 |      100 |       0 |       0 |                   
+ src/components              |      50 |      100 |      50 |      50 |                   
+  Header.tsx                 |     100 |      100 |     100 |     100 |                   
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 7                 
  src/pages                   |   42.85 |       50 |      20 |   42.85 |                   
-  basic-questions.tsx        |       0 |      100 |       0 |       0 | 9-11              
-  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 7                 
-  home.tsx                   |      60 |       50 |   33.33 |      60 | 11,19-25          
+  basic-questions.tsx        |       0 |      100 |       0 |       0 | 10-12             
+  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8                 
+  home.tsx                   |      60 |       50 |   33.33 |      60 | 12,20-26          
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.363 s
+Time:        2.748 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
