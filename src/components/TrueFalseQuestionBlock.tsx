@@ -5,15 +5,15 @@ function TrueFalseQuestionBlock({question, selectedAnswers, index}: {question: s
 
 
     return (
-        <div>
+        <div className="ml-4 mw-20rem pt-10">
             <p>{question}</p>
             <div>
                 <input className="form-check-input" type="radio" />
-                <label className="form-check-label">
+                <label className="form-check-label ml-2">
                     True
                 </label>
-                <input className="form-check-input" type="radio" />
-                <label className="form-check-label">
+                <input className="form-check-input ml-10" type="radio" />
+                <label className="form-check-label ml-2">
                     False
                 </label>
             </div>
