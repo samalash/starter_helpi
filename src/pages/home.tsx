@@ -27,6 +27,7 @@ function Home() {
   }
   return (
     <div className="App">
+      <Header />
       <div className="min-vh-100 pt-30">
         <h1 className="pb-3">Our Title</h1>
         <div className="w-50 mx-auto">
