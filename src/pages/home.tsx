@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button, Form} from 'react-bootstrap';
@@ -14,7 +14,7 @@ if (prevKey !== null) {
 
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
-  //random comment
+  const signedIn = useMemo(() => localStorage.getItem("isSignedIn") === "true", []); //for sign in button
   //sets the local storage item to the api key the user inputed
   function handleSubmit() {
     localStorage.setItem(saveKeyData, JSON.stringify(key));
