@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button, Form} from 'react-bootstrap';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 //local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
 let keyData = "";
@@ -45,6 +46,7 @@ function Home() {
         <br></br>
         <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
       </Form>
+      <Footer />
     </div>
   );
 }
