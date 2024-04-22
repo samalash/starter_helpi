@@ -10,6 +10,16 @@ function Footer(){
               Home
             </a>
           </div>
+          <div>
+            <a href='#/basic-questions'>
+              Basic Questions
+            </a>
+          </div>
+          <div>
+            <a href='#/detailed-questions'>
+              Detailed Questions
+            </a>
+          </div>
           &copy; {new Date().getFullYear()} Company Name
         </div>
       </MDBFooter>
