@@ -4,8 +4,6 @@ import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-
-
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
     console.log(setSelectedAnswers);
