@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (50 ms)
+  ✕ renders learn react link (51 ms)
 
   ● renders learn react link
 
@@ -113,6 +113,39 @@ FAIL src/App.test.tsx
               [0mSubmit[0m
             [36m</button>[39m
           [36m</form>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"bg-light text-left text-lg-left"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"text-left p-3"[39m
+              [33mstyle[39m=[32m"background-color: rgba(0, 0, 0, 0.2); text-align: left;"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"#/"[39m
+                [36m>[39m
+                  [0mHome[0m
+                [36m</a>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"#/basic-questions"[39m
+                [36m>[39m
+                  [0mBasic Questions[0m
+                [36m</a>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"#/detailed-questions"[39m
+                [36m>[39m
+                  [0mDetailed Questions[0m
+                [36m</a>[39m
+              [36m</div>[39m
+              [0m© [0m
+              [0m2024[0m
+              [0m Company Name[0m
+            [36m</div>[39m
+          [36m</footer>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -138,24 +171,25 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |    25.8 |    16.66 |   27.27 |    25.8 |                   
+All files                    |   28.12 |    16.66 |   33.33 |   28.12 |                   
  src                         |    8.33 |        0 |   33.33 |    8.33 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/components              |   33.33 |      100 |   33.33 |   33.33 |                   
+ src/components              |      50 |      100 |      50 |      50 |                   
+  Footer.tsx                 |     100 |      100 |     100 |     100 |                   
   Header.tsx                 |     100 |      100 |     100 |     100 |                   
   MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7                 
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 7                 
  src/pages                   |    37.5 |       50 |      20 |    37.5 |                   
-  basic-questions.tsx        |       0 |      100 |       0 |       0 | 9-11              
-  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 7-9               
-  home.tsx                   |      60 |       50 |   33.33 |      60 | 12,20-26          
+  basic-questions.tsx        |       0 |      100 |       0 |       0 | 8-10              
+  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8-10              
+  home.tsx                   |      60 |       50 |   33.33 |      60 | 13,21-27          
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.887 s
+Time:        3.118 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
