@@ -10,22 +10,22 @@ function MultipleChoiceQuestionBlock({question, possibleAnswers, selectedAnswers
             <div className="vstack gap-2 mw-100">
 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)}/>
                     {possibleAnswers[0]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)}/>
                     {possibleAnswers[1]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)}/>
                     {possibleAnswers[2]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)}/>
                     {possibleAnswers[3]}
                 </label>
             </div>
