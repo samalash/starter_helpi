@@ -2,8 +2,6 @@
 
 
 function TrueFalseQuestionBlock({question, selectedAnswers, index}: {question: string, selectedAnswers: string[], index: number}) {
-
-
     return (
         <div className="ml-4 mw-20rem pt-10">
             <p>{question}</p>
