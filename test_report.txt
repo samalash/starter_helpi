@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (51 ms)
+  ✕ renders learn react link (50 ms)
 
   ● renders learn react link
 
@@ -59,17 +59,19 @@ FAIL src/App.test.tsx
           [36m<div[39m
             [33mclass[39m=[32m"min-vh-100 pt-30"[39m
           [36m>[39m
-            [36m<h1[39m
-              [33mclass[39m=[32m"pb-3"[39m
-            [36m>[39m
-              [0mOur Title[0m
-            [36m</h1>[39m
-            [36m<div[39m
-              [33mclass[39m=[32m"w-50 mx-auto"[39m
-            [36m>[39m
-              [36m<p>[39m
-                [0mLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed ligula nec ante vehicula dignissim vel nec ex. Sed condimentum metus vitae elit condimentum, sed hendrerit libero sodales. Integer eget arcu id ligula fringilla ullamcorper. Sed in magna nec metus viverra accumsan. Integer in augue a ligula congue eleifend non sed nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nullam ut lorem sapien. Nunc accumsan purus id tortor gravida, ut consequat quam feugiat. Sed consectetur, lorem vitae condimentum congue, nisl nulla suscipit urna, non fermentum mauris sapien non nisi. Curabitur bibendum ipsum vitae lectus sollicitudin, nec ultrices elit sodales. Nunc id elit eget tortor malesuada malesuada. Sed euismod purus nec justo vulputate, ut lacinia dui dignissim. Etiam in velit nec est scelerisque ultrices. Sed dignissim velit non tincidunt posuere.[0m
-              [36m</p>[39m
+            [36m<div>[39m
+              [36m<h1[39m
+                [33mclass[39m=[32m"pb-3"[39m
+              [36m>[39m
+                [0mOur Title[0m
+              [36m</h1>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"w-50 mx-auto"[39m
+              [36m>[39m
+                [36m<p>[39m
+                  [0mLorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed ligula nec ante vehicula dignissim vel nec ex. Sed condimentum metus vitae elit condimentum, sed hendrerit libero sodales. Integer eget arcu id ligula fringilla ullamcorper. Sed in magna nec metus viverra accumsan. Integer in augue a ligula congue eleifend non sed nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nullam ut lorem sapien. Nunc accumsan purus id tortor gravida, ut consequat quam feugiat. Sed consectetur, lorem vitae condimentum congue, nisl nulla suscipit urna, non fermentum mauris sapien non nisi. Curabitur bibendum ipsum vitae lectus sollicitudin, nec ultrices elit sodales. Nunc id elit eget tortor malesuada malesuada. Sed euismod purus nec justo vulputate, ut lacinia dui dignissim. Etiam in velit nec est scelerisque ultrices. Sed dignissim velit non tincidunt posuere.[0m
+                [36m</p>[39m
+              [36m</div>[39m
             [36m</div>[39m
             [36m<div[39m
               [33mclass[39m=[32m"pt-10"[39m
@@ -189,7 +191,7 @@ All files                    |   28.12 |    16.66 |   33.33 |   28.12 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.118 s
+Time:        2.925 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
