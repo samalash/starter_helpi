@@ -3,6 +3,22 @@ import '../App.css';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import OpenAI from "openai";
+
+
+const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY") ?? undefined, dangerouslyAllowBrowser: true});
+
+async function createChat() {
+    return await openai.chat.completions.create({
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: "Who are you?" }
+        ],
+        model: "gpt-4-turbo",
+    });
+}
+
+console.log(createChat());
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
