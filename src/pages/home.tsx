@@ -39,7 +39,7 @@ function Home() {
         </div>
       ) : (
         <div>
-          <h1 className="pb-3">Welcome Back NAME</h1>
+          <h1 className="pb-3">Welcome Back!</h1>
         </div>
       )}
         <div className="pt-10">
