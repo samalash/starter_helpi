@@ -13,6 +13,8 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+const name = localStorage.getItem("name");
+
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
@@ -39,7 +41,7 @@ function Home() {
         </div>
       ) : (
         <div>
-          <h1 className="pb-3">Welcome Back!</h1>
+          <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
