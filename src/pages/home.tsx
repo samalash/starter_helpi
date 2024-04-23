@@ -40,6 +40,7 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome Back!</h1>
+          <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
         <div className="pt-10">
