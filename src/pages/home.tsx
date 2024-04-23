@@ -13,6 +13,8 @@ if (prevKey !== null) {
   keyData = JSON.parse(prevKey);
 }
 
+const name = localStorage.getItem("Name");
+
 function Home() {
   const [key, setKey] = useState<string>(keyData); //for api key input
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
