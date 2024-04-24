@@ -4,6 +4,7 @@ import '../App.css';
 import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CareerOption } from '../types';
 
 const name = localStorage.getItem("name");
 
@@ -11,10 +12,6 @@ const name = localStorage.getItem("name");
 const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
 const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
 basicQuestionsResultsArray.shift();
-interface CareerOption {
-  title: string;
-  description: string;
-}
 
 function parseCareerOption(optionString: string): CareerOption {
   const splitString = optionString.split(':'); // Split the string by ':'
