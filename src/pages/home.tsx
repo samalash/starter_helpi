@@ -4,19 +4,29 @@ import '../App.css';
 import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { CareerOptionInterface } from '../types';
+import { CareerOption } from '../components/CareerOption';
 
 const name = localStorage.getItem("name");
-const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
-// Split the string into an array of substrings based on the numbers
-const jobsArray = jobsString.split(/\d+\./);
 
-// Remove the first empty string from the array
-jobsArray.shift();
+//Basic Questions
+const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+basicQuestionsResultsArray.shift();
 
-// Trim whitespace from each job title
-const jobs = jobsArray.map(job => job.trim());
+function parseCareerOption(optionString: string): CareerOptionInterface {
+  const splitString = optionString.split(':'); // Split the string by ':'
+  const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
+  const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
 
-console.log(jobs);
+  return {
+    title,
+    description
+  };
+}
+
+let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
+basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
 function Home() {
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
@@ -35,19 +45,14 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
-          <h2 className="pb-3">Here are some job listings that match your career results:</h2>
-          <div className="w-50 mx-auto">
-            <ol>
-              {jobs.map((job, index) => (
-                <li key={index}>
-                  <h3>{job}</h3>
-                    <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
-                    <p></p>
-                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer">LinkedIn Jobs</a>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <h2>Here is your latest report from your Basic Questions Assessment:</h2>
+          <ol>
+          {basicQuestionsResultsArrayFormatted.map((option, index) => (
+            <li>
+              <CareerOption key={index} title={option.title} description={option.description} />
+            </li>
+          ))}
+          </ol>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
