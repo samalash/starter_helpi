@@ -4,6 +4,7 @@ import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
+import { Button } from 'react-bootstrap';
 
 
 const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
@@ -50,11 +51,8 @@ function BasicQuestionsPage() {
                     <TrueFalseQuestionBlock question={questions[5]} selectedAnswers={selectedAnswers} index={5}    />
                     <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
                 </div>
-                <div>
-
-                </div>
-                <div>
-
+                <div className="mb-5">
+                    <Button className="ml-90 mt-5" onClick={handleQuizSubmit}>Submit Answers</Button>
                 </div>
             </div>
             <Footer />
