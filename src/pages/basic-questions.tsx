@@ -35,6 +35,20 @@ const questions:string[] = [
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
+
+    const handleQuizSubmit = () =>{
+        if (!selectedAnswers.includes("")){
+            const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
+            console.log(questionsAndAnswersString);
+            const promptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
+            console.log(promptString);
+            generateResponse(promptString).then((response) => {
+                console.log(response);
+            });
+
+        }
+    }
+
     console.log(setSelectedAnswers);
     return (
         <div>
