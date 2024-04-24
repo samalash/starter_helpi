@@ -6,9 +6,31 @@ import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
+import { CareerOptionInterface } from '../types';
+import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
+
+const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+basicQuestionsResultsArray.shift();
+
+function parseCareerOption(optionString: string): CareerOptionInterface {
+  const splitString = optionString.split(':'); // Split the string by ':'
+  const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
+  const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
+
+  return {
+    title,
+    description
+  };
+}
+
+let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
+basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
+
 
 async function generateResponse(prompt:string):Promise<string> {
     const response = await openai?.chat.completions.create({
