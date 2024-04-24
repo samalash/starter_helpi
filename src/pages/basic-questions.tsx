@@ -35,9 +35,11 @@ const questions:string[] = [
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
+    const [processing, setProcessing] = useState<boolean>(false);
 
     const handleQuizSubmit = () =>{
         if (!selectedAnswers.includes("")){
+            setProcessing(true);
             const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
             console.log(questionsAndAnswersString);
             localStorage.setItem("basic-questions-answers", questionsAndAnswersString);
@@ -55,6 +57,7 @@ function BasicQuestionsPage() {
                     });
                 }
             });
+            setProcessing(false);
 
 
 
