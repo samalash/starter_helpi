@@ -8,7 +8,7 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
 
-async function createChat():Promise<string> {
+async function generateResponse():Promise<string> {
     const response = await openai.chat.completions.create({
         messages: [
             { role: "system", content: "You are a helpful assistant." },
@@ -19,7 +19,7 @@ async function createChat():Promise<string> {
     return response.choices[0].message.content ?? "Error generating message!";
 }
 
-console.log(createChat());
+console.log(generateResponse());
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
