@@ -6,12 +6,14 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const name = localStorage.getItem("name");
+const jobs = ["Job+1", "Job+2", "Job+3"];
+const indeedJoblinks = ["https://www.indeed.com/jobs?q=" + jobs[0], "https://www.indeed.com/jobs?q=Job+2", "https://www.indeed.com/jobs?q=Job+3"];
+const linkedinJoblinks = ["https://www.linkedin.com/jobs/search/?keywords=Job+1", "https://www.linkedin.com/jobs/search/?keywords=Job+2", "https://www.linkedin.com/jobs/search/?keywords=Job+3"];
+
 
 function Home() {
-
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
-  
-  
+
   return (
     <div className="App">
       <Header />
@@ -26,6 +28,19 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
+          <h2 className="pb-3">Here are your career recommendations:</h2>
+          <div className="w-50 mx-auto">
+            <ul>
+              {jobs.map((job, index) => (
+                <li key={index}>
+                  <h3>{job.replace("+", " ")}</h3>
+                    <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
+                    <p></p>
+                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer" className="ml-4">LinkedIn Jobs</a>
+                </li>
+              ))}
+            </ul>
+          </div>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
