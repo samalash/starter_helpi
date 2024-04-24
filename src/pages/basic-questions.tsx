@@ -3,6 +3,23 @@ import '../App.css';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import OpenAI from "openai";
+
+
+const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
+
+async function generateResponse(prompt:string):Promise<string> {
+    const response = await openai.chat.completions.create({
+        messages: [
+            { role: "system", content: "You are a helpful assistant." },
+            { role: "user", content: prompt }
+        ],
+        model: "gpt-4-turbo",
+    });
+    return response.choices[0].message.content ?? "Error generating message!";
+}
+
+
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
