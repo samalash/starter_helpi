@@ -30,7 +30,7 @@ function Home() {
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
           <h2 className="pb-3">Here are your career recommendations:</h2>
           <div className="w-50 mx-auto">
-            <ul>
+            <ol>
               {jobs.map((job, index) => (
                 <li key={index}>
                   <h3>{job.replace("+", " ")}</h3>
@@ -39,7 +39,7 @@ function Home() {
                     <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer" className="ml-4">LinkedIn Jobs</a>
                 </li>
               ))}
-            </ul>
+            </ol>
           </div>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
