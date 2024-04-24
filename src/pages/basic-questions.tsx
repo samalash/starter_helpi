@@ -12,7 +12,7 @@ async function generateResponse(prompt:string):Promise<string> {
     const response = await openai.chat.completions.create({
         messages: [
             { role: "system", content: "You are a career advisor that uses answers to a career-based questionnaire to determine the best career choices for users." },
-            { role: "user", content: "I am a user that took the questionaire and will provide my answers to the questionnaire for you to analyze and make 3 career recommendations. Your response should be a numbered list, with the most recommended career as the first one." },
+            { role: "user", content: "I am a user that took the questionaire and will provide my answers to the questionnaire for you to analyze and make 3 career recommendations." },
             { role: "user", content: prompt }
         ],
         model: "gpt-4-turbo",
