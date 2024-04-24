@@ -22,6 +22,16 @@ async function generateResponse(prompt:string):Promise<string> {
 
 console.log(generateResponse("Who are you?"));
 
+const questions:string[] = [
+    "You prefer a structured and organized work environment with clear guidelines.", 
+    "You're more interested in practical, hands-on tasks than theoretical concepts.",
+    "You feel comfortable speaking in front of large groups of people.",
+    "You are passionate about making a positive impact on society through your work.",
+    "You may not prioritize a fast-paced environment with frequent changes.",
+    "You might not gravitate naturally towards leadership roles, but you might still be open to them.",
+    "Job security and stability seem important to you."
+];
+
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
     console.log(setSelectedAnswers);
