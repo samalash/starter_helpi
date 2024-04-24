@@ -55,10 +55,12 @@ function BasicQuestionsPage() {
                         console.log(reportPromptResponse);
                         if (reportPromptResponse !== "Error generating message!")
                             localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
+                        setProcessing(false);
                     });
+                } else {
+                    setProcessing(false);
                 }
             });
-            setProcessing(false);
 
 
 
