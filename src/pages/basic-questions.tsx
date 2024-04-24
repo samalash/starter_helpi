@@ -8,14 +8,15 @@ import OpenAI from "openai";
 
 const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
 
-async function createChat() {
-    return await openai.chat.completions.create({
+async function createChat():Promise<string> {
+    const response = await openai.chat.completions.create({
         messages: [
             { role: "system", content: "You are a helpful assistant." },
             { role: "user", content: "Who are you?" }
         ],
         model: "gpt-4-turbo",
     });
+    return response.choices[0].message.content ?? "Error generating message!";
 }
 
 console.log(createChat());
