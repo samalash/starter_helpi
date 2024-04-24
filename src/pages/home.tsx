@@ -28,16 +28,6 @@ function parseCareerOption(optionString: string): CareerOptionInterface {
 let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
-const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
-// Split the string into an array of substrings based on the numbers
-const jobsArray = jobsString.split(/\d+\./);
-
-// Remove the first empty string from the array
-jobsArray.shift();
-
-// Trim whitespace from each job title
-const jobs = jobsArray.map(job => job.trim());
-
 function Home() {
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
 
