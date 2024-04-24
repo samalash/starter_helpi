@@ -36,7 +36,7 @@ function Home() {
                   <h3>{job.replace("+", " ")}</h3>
                     <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
                     <p></p>
-                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer" className="ml-4">LinkedIn Jobs</a>
+                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer">LinkedIn Jobs</a>
                 </li>
               ))}
             </ol>
