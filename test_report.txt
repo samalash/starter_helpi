@@ -8,7 +8,7 @@
       at Object.<anonymous> (src/pages/basic-questions.tsx:24:9)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (49 ms)
+  ✕ renders learn react link (53 ms)
 
   ● renders learn react link
 
@@ -177,7 +177,7 @@ FAIL src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   33.33 |       25 |   27.77 |      34 |                   
+All files                    |   28.81 |    21.42 |   26.31 |   29.31 |                   
  src                         |    8.33 |        0 |   33.33 |    8.33 |                   
   App.tsx                    |     100 |      100 |     100 |     100 |                   
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
@@ -187,15 +187,15 @@ All files                    |   33.33 |       25 |   27.77 |      34 |
   Header.tsx                 |     100 |       50 |     100 |     100 | 16                
   MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7                 
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13              
- src/pages                   |   34.78 |       25 |   28.57 |   36.36 |                   
-  basic-questions.tsx        |   29.41 |       30 |      20 |   31.25 | 37-53             
+ src/pages                   |    25.8 |       20 |      25 |   26.66 |                   
+  basic-questions.tsx        |      20 |    21.42 |   16.66 |   20.83 | 37-66             
   detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8-10              
   home.tsx                   |     100 |    16.66 |     100 |     100 | 19-28             
 -----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.033 s
+Time:        3.114 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
