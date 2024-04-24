@@ -35,7 +35,7 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
-          <h2 className="pb-3">Here are your career recommendations:</h2>
+          <h2 className="pb-3">Here are some job listings that match your career results:</h2>
           <div className="w-50 mx-auto">
             <ol>
               {jobs.map((job, index) => (
