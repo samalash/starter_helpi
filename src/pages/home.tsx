@@ -4,7 +4,8 @@ import '../App.css';
 import { Button } from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { CareerOption } from '../types';
+import { CareerOptionInterface } from '../types';
+import { CareerOption } from '../components/CareerOption';
 
 const name = localStorage.getItem("name");
 
@@ -13,7 +14,7 @@ const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-re
 const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
 basicQuestionsResultsArray.shift();
 
-function parseCareerOption(optionString: string): CareerOption {
+function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
   const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
@@ -24,11 +25,9 @@ function parseCareerOption(optionString: string): CareerOption {
   };
 }
 
-const optionString = basicQuestionsResultsArray[0];
-
-const careerOption: CareerOption = parseCareerOption(optionString);
-
-console.log(careerOption);
+let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
+basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+console.log(basicQuestionsResultsArrayFormatted);
 
 const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
 // Split the string into an array of substrings based on the numbers
@@ -58,8 +57,10 @@ function Home() {
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
           <h2>Here is your latest report from your Basic Questions Assessment:</h2>
-          <div className="w-50 mx-auto">
-            <p>{}</p>
+          <div>
+          {basicQuestionsResultsArrayFormatted.map((option, index) => (
+            <CareerOption key={index} title={option.title} description={option.description} />
+          ))}
           </div>
           <h2 className="pb-3">Here are some job listings that match your career results:</h2>
           <div className="w-50 mx-auto">

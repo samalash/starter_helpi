@@ -95,8 +95,6 @@
   margin-right: 0.5rem;
 }
 
-
-
 li {
   text-align: left;
 }
@@ -112,4 +110,8 @@ li {
 
 .mw-20rem {
   max-width: 20rem;
+}
+
+.text-left {
+  text-align: left;
 }

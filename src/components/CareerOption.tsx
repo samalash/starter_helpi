@@ -1,7 +1,7 @@
-export const CareerOptions = (props: { title: string, description: string }) => {
+export const CareerOption = (props: { title: string, description: string }) => {
   return (
-    <div>
-      <h2>{props.title}</h2>
+    <div className="max-width-75">
+      <h3 className="text-left">{props.title}</h3>
       <p>{props.description}</p>
     </div>
   );

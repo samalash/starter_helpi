@@ -1,4 +1,4 @@
-export interface CareerOption {
+export interface CareerOptionInterface {
     title: string;
     description: string;
 }
