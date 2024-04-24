@@ -7,16 +7,16 @@ FAIL src/App.test.tsx
 
     The OPENAI_API_KEY environment variable is missing or empty; either provide it, or instantiate the OpenAI client with an apiKey option, like new OpenAI({ apiKey: 'My API Key' }).
 
-       7 |
        8 |
-    >  9 | const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
+       9 |
+    > 10 | const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
          |                ^
-      10 |
-      11 | async function generateResponse(prompt:string):Promise<string> {
-      12 |     const response = await openai.chat.completions.create({
+      11 |
+      12 | async function generateResponse(prompt:string):Promise<string> {
+      13 |     const response = await openai.chat.completions.create({
 
       at new OpenAI (node_modules/openai/src/index.ts:112:13)
-      at Object.<anonymous> (src/pages/basic-questions.tsx:9:16)
+      at Object.<anonymous> (src/pages/basic-questions.tsx:10:16)
       at Object.<anonymous> (src/App.tsx:3:1)
       at Object.<anonymous> (src/App.test.tsx:3:1)
       at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
@@ -24,29 +24,6 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
------------------------------|---------|----------|---------|---------|-------------------
-File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
------------------------------|---------|----------|---------|---------|-------------------
-All files                    |       0 |        0 |       0 |       0 |                   
- src                         |       0 |        0 |       0 |       0 |                   
-  App.tsx                    |       0 |      100 |       0 |       0 | 9                 
-  index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
-  reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
- src/components              |       0 |        0 |       0 |       0 |                   
-  Footer.tsx                 |       0 |        0 |       0 |       0 | 5-26              
-  Header.tsx                 |       0 |        0 |       0 |       0 | 6-8               
-  MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7                 
-  TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5                 
- src/pages                   |       0 |        0 |       0 |       0 |                   
-  basic-questions.tsx        |       0 |        0 |       0 |       0 | 9-28              
-  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8-10              
-  home.tsx                   |       0 |        0 |       0 |       0 | 8-15              
------------------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 failed, 1 total
-Tests:       0 total
-Snapshots:   0 total
-Time:        3.229 s
-Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because
@@ -59,3 +36,26 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+-----------------------------|---------|----------|---------|---------|-------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------------------|---------|----------|---------|---------|-------------------
+All files                    |       0 |        0 |       0 |       0 |                   
+ src                         |       0 |        0 |       0 |       0 |                   
+  App.tsx                    |       0 |      100 |       0 |       0 | 9                 
+  index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
+  reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
+ src/components              |       0 |        0 |       0 |       0 |                   
+  Footer.tsx                 |       0 |        0 |       0 |       0 | 5-26              
+  Header.tsx                 |       0 |        0 |       0 |       0 | 6-8               
+  MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7                 
+  TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13              
+ src/pages                   |       0 |        0 |       0 |       0 |                   
+  basic-questions.tsx        |       0 |        0 |       0 |       0 | 10-53             
+  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8-10              
+  home.tsx                   |       0 |        0 |       0 |       0 | 8-15              
+-----------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        3.405 s
+Ran all test suites.
