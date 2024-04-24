@@ -77,7 +77,7 @@ function BasicQuestionsPage() {
             <Header/>
             </div>
             <div>
-                <div className="flex-container mw-75 ml-90">
+                <div className="flex-container mw-75 mx-auto">
                     <TrueFalseQuestionBlock question={questions[0]} selectedAnswers={selectedAnswers} index={0}    />
                     <TrueFalseQuestionBlock question={questions[1]} selectedAnswers={selectedAnswers} index={1}    />
                     <TrueFalseQuestionBlock question={questions[2]} selectedAnswers={selectedAnswers} index={2}    />
@@ -87,12 +87,14 @@ function BasicQuestionsPage() {
                     <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
                 </div>
                 <div className="mb-5">
-                    <Button className="ml-90 mt-5" onClick={handleQuizSubmit} disabled={processing}>
-                        {processing ? 
-                        <Spinner></Spinner> :
-                        "Submit Answers"}
-                    </Button>
-                    <p>
+                    <p className="text-center">
+                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing}>
+                            {processing ? 
+                            <Spinner></Spinner> :
+                            "Submit Answers"}
+                        </Button>
+                    </p>
+                    <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
                         {resultCreated ? 
                         localStorage.getItem("basic-questions-paragraph-report") :
                         ""}
