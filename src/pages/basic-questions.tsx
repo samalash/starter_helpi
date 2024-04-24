@@ -40,21 +40,20 @@ function BasicQuestionsPage() {
         if (!selectedAnswers.includes("")){
             const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
             console.log(questionsAndAnswersString);
-            localStorage.setItem("basic-quiz-questions-answers", questionsAndAnswersString);
+            localStorage.setItem("basic-questions-answers", questionsAndAnswersString);
             const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
             console.log(listPromptString);
             generateResponse(listPromptString).then((listPromptResponse) => {
                 console.log(listPromptResponse);
                 if (listPromptResponse !== "Error generating message!"){
-                    localStorage.setItem("basic-quiz-list-jobs", listPromptResponse);
+                    localStorage.setItem("basic-questions-list-jobs", listPromptResponse);
                     const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
                     generateResponse(reportPromptString).then((reportPromptResponse) => {
                         console.log(reportPromptResponse);
                         if (reportPromptResponse !== "Error generating message!")
-                            localStorage.setItem("basic-quiz-paragraph-report", reportPromptResponse);
+                            localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
                     });
                 }
-                
             });
 
 

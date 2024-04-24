@@ -6,12 +6,21 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const name = localStorage.getItem("name");
+const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
+// Split the string into an array of substrings based on the numbers
+const jobsArray = jobsString.split(/\d+\./);
+
+// Remove the first empty string from the array
+jobsArray.shift();
+
+// Trim whitespace from each job title
+const jobs = jobsArray.map(job => job.trim());
+
+console.log(jobs);
 
 function Home() {
-
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
-  
-  
+
   return (
     <div className="App">
       <Header />
@@ -26,6 +35,19 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
+          <h2 className="pb-3">Here are some job listings that match your career results:</h2>
+          <div className="w-50 mx-auto">
+            <ol>
+              {jobs.map((job, index) => (
+                <li key={index}>
+                  <h3>{job}</h3>
+                    <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
+                    <p></p>
+                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer">LinkedIn Jobs</a>
+                </li>
+              ))}
+            </ol>
+          </div>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
