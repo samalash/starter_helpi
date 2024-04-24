@@ -6,6 +6,33 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const name = localStorage.getItem("name");
+
+//Basic Questions
+const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+basicQuestionsResultsArray.shift();
+interface CareerOption {
+  title: string;
+  description: string;
+}
+
+function parseCareerOption(optionString: string): CareerOption {
+  const splitString = optionString.split(':'); // Split the string by ':'
+  const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
+  const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
+
+  return {
+    title,
+    description
+  };
+}
+
+const optionString = basicQuestionsResultsArray[0];
+
+const careerOption: CareerOption = parseCareerOption(optionString);
+
+console.log(careerOption);
+
 const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
 // Split the string into an array of substrings based on the numbers
 const jobsArray = jobsString.split(/\d+\./);
@@ -15,8 +42,6 @@ jobsArray.shift();
 
 // Trim whitespace from each job title
 const jobs = jobsArray.map(job => job.trim());
-
-console.log(jobs);
 
 function Home() {
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
@@ -35,6 +60,10 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
+          <h2>Here is your latest report from your Basic Questions Assessment:</h2>
+          <div className="w-50 mx-auto">
+            <p>{}</p>
+          </div>
           <h2 className="pb-3">Here are some job listings that match your career results:</h2>
           <div className="w-50 mx-auto">
             <ol>
