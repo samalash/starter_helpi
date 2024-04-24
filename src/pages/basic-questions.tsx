@@ -11,7 +11,7 @@ const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (
 async function generateResponse(prompt:string):Promise<string> {
     const response = await openai.chat.completions.create({
         messages: [
-            { role: "system", content: "You are a helpful assistant." },
+            { role: "system", content: "You are a career advisor that uses answers to a career-based questionaire to determine the best career choices for users." },
             { role: "user", content: prompt }
         ],
         model: "gpt-4-turbo",
