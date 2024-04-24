@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 import OpenAI from "openai";
 
 
-const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY") ?? undefined, dangerouslyAllowBrowser: true});
+const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
 
 async function createChat() {
     return await openai.chat.completions.create({
