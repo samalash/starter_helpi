@@ -5,14 +5,6 @@ import { Button, Form} from 'react-bootstrap';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-//local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); //so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
-if (prevKey !== null) {
-  keyData = JSON.parse(prevKey);
-}
-
 const name = localStorage.getItem("name");
 
 function Home() {
@@ -28,6 +20,7 @@ function Home() {
   function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
     setKey(event.target.value);
   }
+  
   return (
     <div className="App">
       <Header />
@@ -50,13 +43,6 @@ function Home() {
           <Button href="#/detailed-questions" className="ml-4">Detailed Questions</Button>
         </div>
       </div>
-
-      <Form>
-        <Form.Label>API Key:</Form.Label>
-        <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-        <br></br>
-        <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-      </Form>
       <Footer />
     </div>
   );
