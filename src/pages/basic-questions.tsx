@@ -37,6 +37,7 @@ const questions:string[] = [
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     const [processing, setProcessing] = useState<boolean>(false);
+    const [resultCreated, setResultCreated] = useState<boolean>(false);
 
     const handleQuizSubmit = () =>{
         if (!selectedAnswers.includes("")){
@@ -53,8 +54,10 @@ function BasicQuestionsPage() {
                     const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
                     generateResponse(reportPromptString).then((reportPromptResponse) => {
                         console.log(reportPromptResponse);
-                        if (reportPromptResponse !== "Error generating message!")
+                        if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
+                            setResultCreated(true);
+                        }
                         setProcessing(false);
                     });
                 } else {
@@ -89,6 +92,11 @@ function BasicQuestionsPage() {
                         <Spinner></Spinner> :
                         "Submit Answers"}
                     </Button>
+                    <p>
+                        {resultCreated ? 
+                        localStorage.getItem("basic-questions-paragraph-report") :
+                        ""}
+                    </p>
                 </div>
             </div>
             <Footer />
