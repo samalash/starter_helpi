@@ -7,10 +7,10 @@ import OpenAI from "openai";
 import { Button } from 'react-bootstrap';
 
 
-const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
+const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 
 async function generateResponse(prompt:string):Promise<string> {
-    const response = await openai.chat.completions.create({
+    const response = await openai?.chat.completions.create({
         messages: [
             { role: "system", content: "You are a career advisor that uses answers to a career-based questionnaire to determine the best career choices for users." },
             { role: "user", content: "I am a user that took the questionaire and will provide my answers to the questionnaire for you to analyze and make 3 career recommendations." },
@@ -18,7 +18,7 @@ async function generateResponse(prompt:string):Promise<string> {
         ],
         model: "gpt-4-turbo",
     });
-    return response.choices[0].message.content ?? "Error generating message!";
+    return response?.choices[0].message.content ?? "Error generating message!";
 }
 
 console.log(generateResponse("Who are you?"));
