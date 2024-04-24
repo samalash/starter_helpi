@@ -7,9 +7,6 @@ import Footer from '../components/Footer';
 
 const name = localStorage.getItem("name");
 const jobs = ["Job+1", "Job+2", "Job+3"];
-const indeedJoblinks = ["https://www.indeed.com/jobs?q=" + jobs[0], "https://www.indeed.com/jobs?q=Job+2", "https://www.indeed.com/jobs?q=Job+3"];
-const linkedinJoblinks = ["https://www.linkedin.com/jobs/search/?keywords=Job+1", "https://www.linkedin.com/jobs/search/?keywords=Job+2", "https://www.linkedin.com/jobs/search/?keywords=Job+3"];
-
 
 function Home() {
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
