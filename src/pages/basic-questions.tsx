@@ -19,7 +19,7 @@ async function generateResponse(prompt:string):Promise<string> {
     return response.choices[0].message.content ?? "Error generating message!";
 }
 
-
+console.log(generateResponse("Who are you?"));
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
