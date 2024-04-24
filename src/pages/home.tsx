@@ -27,7 +27,6 @@ function parseCareerOption(optionString: string): CareerOptionInterface {
 
 let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
-console.log(basicQuestionsResultsArrayFormatted);
 
 const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
 // Split the string into an array of substrings based on the numbers
@@ -57,24 +56,13 @@ function Home() {
         <div>
           <h1 className="pb-3">Welcome {name !== "" ? "b" : "B"}ack{name !== "" && ", " + name}!</h1>
           <h2>Here is your latest report from your Basic Questions Assessment:</h2>
-          <div>
+          <ol>
           {basicQuestionsResultsArrayFormatted.map((option, index) => (
-            <CareerOption key={index} title={option.title} description={option.description} />
+            <li>
+              <CareerOption key={index} title={option.title} description={option.description} />
+            </li>
           ))}
-          </div>
-          <h2 className="pb-3">Here are some job listings that match your career results:</h2>
-          <div className="w-50 mx-auto">
-            <ol>
-              {jobs.map((job, index) => (
-                <li key={index}>
-                  <h3>{job}</h3>
-                    <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
-                    <p></p>
-                    <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer">LinkedIn Jobs</a>
-                </li>
-              ))}
-            </ol>
-          </div>
+          </ol>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
       )}
