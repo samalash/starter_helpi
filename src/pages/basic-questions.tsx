@@ -42,13 +42,13 @@ function BasicQuestionsPage() {
             </div>
             <div>
                 <div className="flex-container mw-75 ml-90">
-                    <TrueFalseQuestionBlock question="You prefer a structured and organized work environment with clear guidelines." selectedAnswers={selectedAnswers} index={0}    />
-                    <TrueFalseQuestionBlock question="You're more interested in practical, hands-on tasks than theoretical concepts." selectedAnswers={selectedAnswers} index={1}    />
-                    <TrueFalseQuestionBlock question="You feel comfortable speaking in front of large groups of people." selectedAnswers={selectedAnswers} index={2}    />
-                    <TrueFalseQuestionBlock question="You are passionate about making a positive impact on society through your work." selectedAnswers={selectedAnswers} index={3}    />
-                    <TrueFalseQuestionBlock question="You may not prioritize a fast-paced environment with frequent changes." selectedAnswers={selectedAnswers} index={4}    />
-                    <TrueFalseQuestionBlock question="You might not gravitate naturally towards leadership roles, but you might still be open to them." selectedAnswers={selectedAnswers} index={5}    />
-                    <TrueFalseQuestionBlock question="Job security and stability seem important to you." selectedAnswers={selectedAnswers} index={6}    />
+                    <TrueFalseQuestionBlock question={questions[0]} selectedAnswers={selectedAnswers} index={0}    />
+                    <TrueFalseQuestionBlock question={questions[1]} selectedAnswers={selectedAnswers} index={1}    />
+                    <TrueFalseQuestionBlock question={questions[2]} selectedAnswers={selectedAnswers} index={2}    />
+                    <TrueFalseQuestionBlock question={questions[3]} selectedAnswers={selectedAnswers} index={3}    />
+                    <TrueFalseQuestionBlock question={questions[4]} selectedAnswers={selectedAnswers} index={4}    />
+                    <TrueFalseQuestionBlock question={questions[5]} selectedAnswers={selectedAnswers} index={5}    />
+                    <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
                 </div>
                 <div>
 
