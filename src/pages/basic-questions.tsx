@@ -4,6 +4,7 @@ import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
+import { Button } from 'react-bootstrap';
 
 
 const openai = new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true});
@@ -22,8 +23,32 @@ async function generateResponse(prompt:string):Promise<string> {
 
 console.log(generateResponse("Who are you?"));
 
+const questions:string[] = [
+    "You prefer a structured and organized work environment with clear guidelines.", 
+    "You're more interested in practical, hands-on tasks than theoretical concepts.",
+    "You feel comfortable speaking in front of large groups of people.",
+    "You are passionate about making a positive impact on society through your work.",
+    "You may not prioritize a fast-paced environment with frequent changes.",
+    "You might not gravitate naturally towards leadership roles, but you might still be open to them.",
+    "Job security and stability seem important to you."
+];
+
 function BasicQuestionsPage() {
-    const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+    const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
+
+    const handleQuizSubmit = () =>{
+        if (!selectedAnswers.includes("")){
+            const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
+            console.log(questionsAndAnswersString);
+            const promptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
+            console.log(promptString);
+            generateResponse(promptString).then((response) => {
+                console.log(response);
+            });
+
+        }
+    }
+
     console.log(setSelectedAnswers);
     return (
         <div>
@@ -32,19 +57,16 @@ function BasicQuestionsPage() {
             </div>
             <div>
                 <div className="flex-container mw-75 ml-90">
-                    <TrueFalseQuestionBlock question="You prefer a structured and organized work environment with clear guidelines." selectedAnswers={selectedAnswers} index={0}    />
-                    <TrueFalseQuestionBlock question="You're more interested in practical, hands-on tasks than theoretical concepts." selectedAnswers={selectedAnswers} index={1}    />
-                    <TrueFalseQuestionBlock question="You feel comfortable speaking in front of large groups of people." selectedAnswers={selectedAnswers} index={2}    />
-                    <TrueFalseQuestionBlock question="You are passionate about making a positive impact on society through your work." selectedAnswers={selectedAnswers} index={3}    />
-                    <TrueFalseQuestionBlock question="You may not prioritize a fast-paced environment with frequent changes." selectedAnswers={selectedAnswers} index={4}    />
-                    <TrueFalseQuestionBlock question="You might not gravitate naturally towards leadership roles, but you might still be open to them." selectedAnswers={selectedAnswers} index={5}    />
-                    <TrueFalseQuestionBlock question="Job security and stability seem important to you." selectedAnswers={selectedAnswers} index={6}    />
+                    <TrueFalseQuestionBlock question={questions[0]} selectedAnswers={selectedAnswers} index={0}    />
+                    <TrueFalseQuestionBlock question={questions[1]} selectedAnswers={selectedAnswers} index={1}    />
+                    <TrueFalseQuestionBlock question={questions[2]} selectedAnswers={selectedAnswers} index={2}    />
+                    <TrueFalseQuestionBlock question={questions[3]} selectedAnswers={selectedAnswers} index={3}    />
+                    <TrueFalseQuestionBlock question={questions[4]} selectedAnswers={selectedAnswers} index={4}    />
+                    <TrueFalseQuestionBlock question={questions[5]} selectedAnswers={selectedAnswers} index={5}    />
+                    <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
                 </div>
-                <div>
-
-                </div>
-                <div>
-
+                <div className="mb-5">
+                    <Button className="ml-90 mt-5" onClick={handleQuizSubmit}>Submit Answers</Button>
                 </div>
             </div>
             <Footer />
