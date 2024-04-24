@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
@@ -81,7 +82,11 @@ function BasicQuestionsPage() {
                     <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
                 </div>
                 <div className="mb-5">
-                    <Button className="ml-90 mt-5" onClick={handleQuizSubmit}>Submit Answers</Button>
+                    <Button className="ml-90 mt-5" onClick={handleQuizSubmit} disabled={processing}>
+                        {processing ? 
+                        <Spinner></Spinner> :
+                        "Submit Answers"}
+                    </Button>
                 </div>
             </div>
             <Footer />
