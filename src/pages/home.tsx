@@ -6,7 +6,17 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const name = localStorage.getItem("name");
-const jobs = ["Job+1", "Job+2", "Job+3"];
+const jobsString = localStorage.getItem("basic-questions-list-jobs") ?? "";
+// Split the string into an array of substrings based on the numbers
+const jobsArray = jobsString.split(/\d+\./);
+
+// Remove the first empty string from the array
+jobsArray.shift();
+
+// Trim whitespace from each job title
+const jobs = jobsArray.map(job => job.trim());
+
+console.log(jobs);
 
 function Home() {
   const [isSignedIn] = useState<boolean>(localStorage.getItem("isSignedIn") === "true"); //for sign in button
@@ -30,7 +40,7 @@ function Home() {
             <ol>
               {jobs.map((job, index) => (
                 <li key={index}>
-                  <h3>{job.replace("+", " ")}</h3>
+                  <h3>{job}</h3>
                     <a href={`https://www.indeed.com/jobs?q=${job}`} target="_blank" rel="noreferrer">Indeed</a>
                     <p></p>
                     <a href={`https://www.linkedin.com/jobs/search/?keywords=${job}`} target="_blank" rel="noreferrer">LinkedIn Jobs</a>
