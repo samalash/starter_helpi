@@ -9,6 +9,26 @@ import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 
+const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
+const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
+detailedQuestionsResultsArray.shift();
+
+function parseCareerOption(optionString: string): CareerOptionInterface {
+  const splitString = optionString.split(':'); // Split the string by ':'
+  const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
+  const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
+
+  return {
+    title,
+    description
+  };
+}
+
+let detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
+detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
+
+
 function DetailedQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
     console.log(setSelectedAnswers);
