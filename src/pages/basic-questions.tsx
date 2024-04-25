@@ -83,6 +83,7 @@ function BasicQuestionsPage() {
                             basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
                             basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
                             basicQuestionsResultsArray.shift();
+                            basicQuestionsResultsArrayFormatted = [];
                             basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                             localStorage.setItem("isSignedIn", "true");
                         }
