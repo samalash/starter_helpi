@@ -8,7 +8,7 @@
       at Object.<anonymous> (src/pages/basic-questions.tsx:47:9)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (53 ms)
+  ✕ renders learn react link (52 ms)
 
   ● renders learn react link
 
@@ -193,29 +193,29 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
------------------------------|---------|----------|---------|---------|-------------------
-File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
------------------------------|---------|----------|---------|---------|-------------------
-All files                    |   30.43 |    31.25 |   17.85 |   31.81 |                   
- src                         |    8.33 |        0 |   33.33 |    8.33 |                   
-  App.tsx                    |     100 |      100 |     100 |     100 |                   
-  index.tsx                  |       0 |      100 |     100 |       0 | 7-19              
-  reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10              
-  types.ts                   |       0 |        0 |       0 |       0 |                   
- src/components              |   45.45 |       50 |   18.18 |   47.61 |                   
-  CareerOption.tsx           |      50 |      100 |       0 |      50 | 2                 
-  CareerOptionQuizPages.tsx  |      50 |      100 |       0 |      50 | 2                 
-  Footer.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23           
-  Header.tsx                 |      50 |       50 |      50 |   66.66 | 16                
-  MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7                 
-  TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13              
- src/pages                   |   29.31 |    33.33 |   14.28 |    30.9 |                   
-  basic-questions.tsx        |    23.8 |       25 |   11.11 |      25 | 20-24,60-122      
-  detailed-questions.tsx     |       0 |      100 |       0 |       0 | 8-10              
-  home.tsx                   |   53.84 |       75 |      25 |   58.33 | 17-21,50          
------------------------------|---------|----------|---------|---------|-------------------
+-----------------------------|---------|----------|---------|---------|--------------------
+File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+-----------------------------|---------|----------|---------|---------|--------------------
+All files                    |   26.11 |       25 |    12.5 |   27.55 |                    
+ src                         |    8.33 |        0 |   33.33 |    8.33 |                    
+  App.tsx                    |     100 |      100 |     100 |     100 |                    
+  index.tsx                  |       0 |      100 |     100 |       0 | 7-19               
+  reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10               
+  types.ts                   |       0 |        0 |       0 |       0 |                    
+ src/components              |   38.46 |       50 |   13.33 |      40 |                    
+  CareerOption.tsx           |      50 |      100 |       0 |      50 | 2                  
+  CareerOptionQuizPages.tsx  |      50 |      100 |       0 |      50 | 2                  
+  Footer.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23            
+  Header.tsx                 |      50 |       50 |      50 |   66.66 | 16                 
+  MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7-28               
+  TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13               
+ src/pages                   |      25 |       25 |    9.09 |   26.66 |                    
+  basic-questions.tsx        |    23.8 |       25 |   11.11 |      25 | 20-24,60-119       
+  detailed-questions.tsx     |   17.07 |       15 |       0 |   18.42 | 19-23,35-43,57-151 
+  home.tsx                   |   53.84 |       75 |      25 |   58.33 | 17-21,50           
+-----------------------------|---------|----------|---------|---------|--------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.337 s
+Time:        3.372 s
 Ran all test suites.
