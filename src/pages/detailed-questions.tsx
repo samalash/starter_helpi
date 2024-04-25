@@ -77,6 +77,7 @@ function DetailedQuestionsPage() {
                         if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("detailed-questions-paragraph-report", reportPromptResponse);
                             setResultCreated(true);
+                            localStorage.setItem("isSignedIn", "true");
                         }
                         setProcessing(false);
                     });
