@@ -8,7 +8,7 @@
       at Object.<anonymous> (src/pages/basic-questions.tsx:47:9)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (52 ms)
+  ✕ renders learn react link (51 ms)
 
   ● renders learn react link
 
@@ -196,7 +196,7 @@ go away.[0m
 -----------------------------|---------|----------|---------|---------|--------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
 -----------------------------|---------|----------|---------|---------|--------------------
-All files                    |   26.11 |       25 |    12.5 |   27.55 |                    
+All files                    |   26.11 |       25 |    12.5 |   27.34 |                    
  src                         |    8.33 |        0 |   33.33 |    8.33 |                    
   App.tsx                    |     100 |      100 |     100 |     100 |                    
   index.tsx                  |       0 |      100 |     100 |       0 | 7-19               
@@ -209,13 +209,13 @@ All files                    |   26.11 |       25 |    12.5 |   27.55 |
   Header.tsx                 |      50 |       50 |      50 |   66.66 | 16                 
   MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7-28               
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13               
- src/pages                   |      25 |       25 |    9.09 |   26.66 |                    
+ src/pages                   |      25 |       25 |    9.09 |   26.37 |                    
   basic-questions.tsx        |    23.8 |       25 |   11.11 |      25 | 20-24,60-119       
-  detailed-questions.tsx     |   17.07 |       15 |       0 |   18.42 | 19-23,35-43,57-151 
+  detailed-questions.tsx     |   17.07 |       15 |       0 |   17.94 | 19-23,35-43,57-152 
   home.tsx                   |   53.84 |       75 |      25 |   58.33 | 17-21,50           
 -----------------------------|---------|----------|---------|---------|--------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.372 s
+Time:        3.289 s
 Ran all test suites.
