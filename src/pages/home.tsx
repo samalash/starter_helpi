@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button } from 'react-bootstrap';
@@ -20,13 +21,6 @@ const parseCareerOption = (optionString: string): CareerOptionInterface => {
   };
 }
 
-//Basic Questions
-const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
-const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
-basicQuestionsResultsArray.shift();
-const basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
-
 const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
 const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
 detailedQuestionsResultsArray.shift();
@@ -34,6 +28,17 @@ const detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
 function Home() {
+  const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
+  useEffect(() => {
+    basicQuestionsResultsArrayFormatted.length = 0;
+    const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+    const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+    basicQuestionsResultsArray.shift();
+    basicQuestionsResultsArray.map((value) => setBasicQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
+    // setBasicQuestionsResultsArrayFormatted(basicQuestionsResultsArrayFormatted);
+    console.log(basicQuestionsResultsArrayFormatted);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Intentionally left empty to only run once
 
   return (
     <div className="App">
