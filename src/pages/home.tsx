@@ -21,22 +21,21 @@ const parseCareerOption = (optionString: string): CareerOptionInterface => {
   };
 }
 
-const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
-const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
-detailedQuestionsResultsArray.shift();
-const detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
 function Home() {
   const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
+  const [detailedQuestionsResultsArrayFormatted, setDetailedQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
   useEffect(() => {
-    basicQuestionsResultsArrayFormatted.length = 0;
+    setBasicQuestionsResultsArrayFormatted([]);
+    setDetailedQuestionsResultsArrayFormatted([]);
     const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
     const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
     basicQuestionsResultsArray.shift();
     basicQuestionsResultsArray.map((value) => setBasicQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
-    // setBasicQuestionsResultsArrayFormatted(basicQuestionsResultsArrayFormatted);
-    console.log(basicQuestionsResultsArrayFormatted);
+    const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
+    const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
+    detailedQuestionsResultsArray.shift();
+    detailedQuestionsResultsArray.map((value) => setDetailedQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Intentionally left empty to only run once
 
