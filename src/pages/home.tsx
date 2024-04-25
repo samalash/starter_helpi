@@ -59,7 +59,9 @@ function Home() {
           ))}
             </div>
           </ol>
-          <h2>Here is your latest report from your Detailed Questions Assessment:</h2>
+          <div className='pt-25'>
+            <h2>Here is your latest report from your Detailed Questions Assessment:</h2>
+          </div>
           <ol>
             <div className='w-75 mx-auto'>
           {detailedQuestionsResultsArrayFormatted.map((option, index) => (
