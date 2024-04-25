@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 function Header(){
-const name = localStorage.getItem("name");
+  const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
 return(
   <Navbar bg="primary" variant="dark">
@@ -13,7 +13,9 @@ return(
       <Nav.Link href="#/basic-questions">Basic Questions</Nav.Link>
       <Nav.Link href="#/detailed-questions">Detailed Questions</Nav.Link>
     </Nav>
-      <Button disabled={name !== ""} className="ms-auto">{name === "" ? "Sign In" : name}</Button>
+    <Button className="ms-auto" onClick={() => {localStorage.setItem("isSignedIn", JSON.stringify(!isSignedIn)); window.location.reload();}}>
+      <span>{isSignedIn ? "Sign out" : "Sign in"}</span>
+    </Button>
   </Navbar>
 );
 }
