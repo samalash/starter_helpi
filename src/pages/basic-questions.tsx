@@ -79,7 +79,7 @@ function BasicQuestionsPage() {
                         if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
                             setResultCreated(true);
-                            localStorage.setItem("isSignedIn", JSON.stringify(true));
+                            localStorage.setItem("isSignedIn", "true");
                         }
                         setProcessing(false);
                     });
