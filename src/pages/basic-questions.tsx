@@ -58,6 +58,7 @@ const questions:string[] = [
 
 function BasicQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
+    console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
 
@@ -86,13 +87,9 @@ function BasicQuestionsPage() {
                     setProcessing(false);
                 }
             });
-
-
-
         }
     }
 
-    console.log(setSelectedAnswers);
     return (
         <div>
             <div className="pb-3">
