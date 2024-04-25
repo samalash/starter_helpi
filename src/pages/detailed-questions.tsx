@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
+import { ProgressBar } from 'react-bootstrap';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 
@@ -162,6 +163,7 @@ function DetailedQuestionsPage() {
                     }
                 </div>
             </div>
+            <ProgressBar animated now={42} />
             <Footer />
         </div>
     );
