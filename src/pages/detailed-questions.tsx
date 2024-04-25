@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import MultipleChoiceQuestionBlock from '../components/MultipleQuestionBlock';
 import Header from '../components/Header';
@@ -92,6 +92,17 @@ function DetailedQuestionsPage() {
             });
         }
     }
+
+    const [countOfProgess, setCountOfProgess] = React.useState(0); // This is the state variable that will keep track of the progress of the quiz
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCountOfProgess(countOfProgess => (selectedAnswers.filter(answer => answer !== "").length / questions.length * 100));
+
+
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
     
     return (
         <div>
@@ -163,7 +174,7 @@ function DetailedQuestionsPage() {
                     }
                 </div>
             </div>
-            <ProgressBar animated now={42} />
+            <ProgressBar animated now={countOfProgess} />
             <Footer />
         </div>
     );
