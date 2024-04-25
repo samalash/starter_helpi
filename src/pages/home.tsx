@@ -8,24 +8,30 @@ import { CareerOption } from '../components/CareerOption';
 
 const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
-//Basic Questions
-const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
-const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
-basicQuestionsResultsArray.shift();
 
 function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
   const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
-
+  
   return {
     title,
     description
   };
 }
 
+//Basic Questions
+const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+basicQuestionsResultsArray.shift();
 const basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
+const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
+const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
+detailedQuestionsResultsArray.shift();
+const detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
+detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
 function Home() {
 
@@ -47,6 +53,16 @@ function Home() {
           <ol>
             <div className='w-75 mx-auto'>
           {basicQuestionsResultsArrayFormatted.map((option, index) => (
+            <li>
+              <CareerOption key={index} title={option.title} description={option.description} />
+            </li>
+          ))}
+            </div>
+          </ol>
+          <h2>Here is your latest report from your Detailed Questions Assessment:</h2>
+          <ol>
+            <div className='w-75 mx-auto'>
+          {detailedQuestionsResultsArrayFormatted.map((option, index) => (
             <li>
               <CareerOption key={index} title={option.title} description={option.description} />
             </li>
