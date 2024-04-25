@@ -55,9 +55,38 @@ const questions:string[] = [
 
 function DetailedQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+    console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
-    console.log(setSelectedAnswers);
+    
+    const handleQuizSubmit = () =>{
+        if (!selectedAnswers.includes("")){
+            setProcessing(true);
+            const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
+            console.log(questionsAndAnswersString);
+            localStorage.setItem("detailed-questions-answers", questionsAndAnswersString);
+            const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
+            console.log(listPromptString);
+            generateResponse(listPromptString).then((listPromptResponse) => {
+                console.log(listPromptResponse);
+                if (listPromptResponse !== "Error generating message!"){
+                    localStorage.setItem("detailed-questions-list-jobs", listPromptResponse);
+                    const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("detailed-questions-list-jobs") + "\n\nFor each career recommendation, provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
+                    generateResponse(reportPromptString).then((reportPromptResponse) => {
+                        console.log(reportPromptResponse);
+                        if (reportPromptResponse !== "Error generating message!"){
+                            localStorage.setItem("detailed-questions-paragraph-report", reportPromptResponse);
+                            setResultCreated(true);
+                        }
+                        setProcessing(false);
+                    });
+                } else {
+                    setProcessing(false);
+                }
+            });
+        }
+    }
+    
     return (
         <div>
             <div className="pb-3">
