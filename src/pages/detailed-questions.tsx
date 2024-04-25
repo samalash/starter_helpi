@@ -43,6 +43,16 @@ async function generateResponse(prompt:string):Promise<string> {
     return response?.choices[0].message.content ?? "Error generating message!";
 }
 
+const questions:string[] = [
+    "What are your primary interests and hobbies?", 
+    "Which of the following would you say are your strongest skills or talents?",
+    "What type of work environment do you thrive in?",
+    "How do you handle challenges or setbacks in the workplace?",
+    "What are your preferred methods of learning and development?",
+    "How do you prefer to communicate with colleagues or clients?",
+    "What role do you typically take in group settings?"
+];
+
 function DetailedQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
     console.log(setSelectedAnswers);
@@ -54,43 +64,43 @@ function DetailedQuestionsPage() {
             <div>
                 <div className="flex-container mw-75 ml-60">
                     <MultipleChoiceQuestionBlock 
-                        question="What are your primary interests and hobbies?" 
+                        question={questions[0]}
                         possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
                         selectedAnswers={selectedAnswers}
                         index={0}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="Which of the following would you say are your strongest skills or talents?" 
+                        question={questions[1]}
                         possibleAnswers={["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"]}
                         selectedAnswers={selectedAnswers}
                         index={1}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="What type of work environment do you thrive in?" 
+                        question={questions[2]}
                         possibleAnswers={["Structured and organized", "Dynamic and flexible", "Collaborative and team-oriented", "Independent and autonomous"]}
                         selectedAnswers={selectedAnswers}
                         index={2}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="How do you handle challenges or setbacks in the workplace?" 
+                        question={questions[3]}
                         possibleAnswers={["Analyzing and strategizing", "Thinking creatively and innovatively", "Seeking support from colleagues", "Tackling issues head-on with practical solutions"]}
                         selectedAnswers={selectedAnswers}
                         index={3}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="What are your preferred methods of learning and development?" 
+                        question={questions[4]}
                         possibleAnswers={["Formal education and training programs", "Hands-on experience and trial-and-error", "Mentorship and guidance from others", "Self-directed learning and exploration"]}
                         selectedAnswers={selectedAnswers}
                         index={4}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="How do you prefer to communicate with colleagues or clients?" 
+                        question={questions[5]}
                         possibleAnswers={["Face-to-face meetings and discussions", "Written communication (emails, reports)", "Phone calls or video conferences", "It depends on the situation"]}
                         selectedAnswers={selectedAnswers}
                         index={5}
                     />
                     <MultipleChoiceQuestionBlock 
-                        question="What role do you typically take in group settings?" 
+                        question={questions[6]}
                         possibleAnswers={["Leader or coordinator", "Creative thinker or idea generator", "Team player or collaborator", "Observer or contributor as needed"]}
                         selectedAnswers={selectedAnswers} 
                         index={6}
