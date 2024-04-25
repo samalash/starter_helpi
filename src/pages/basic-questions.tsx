@@ -118,7 +118,9 @@ function BasicQuestionsPage() {
                     </p>
                     <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
                         {resultCreated ? 
-                        localStorage.getItem("basic-questions-paragraph-report") :
+                        basicQuestionsResultsArrayFormatted.map((option, index) => (
+                            <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
+                        )) :
                         ""}
                     </p>
                 </div>
