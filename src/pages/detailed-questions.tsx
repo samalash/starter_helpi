@@ -11,9 +11,9 @@ import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 
-const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
-const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
-detailedQuestionsResultsArray.shift();
+let detailedQuestionsResults = "";
+let detailedQuestionsResultsArray:string[] = [];
+
 
 function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
@@ -27,7 +27,7 @@ function parseCareerOption(optionString: string): CareerOptionInterface {
 }
 
 let detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
 
 
 
@@ -77,6 +77,10 @@ function DetailedQuestionsPage() {
                         if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("detailed-questions-paragraph-report", reportPromptResponse);
                             setResultCreated(true);
+                            detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
+                            detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
+                            detailedQuestionsResultsArray.shift();
+                            detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                         }
                         setProcessing(false);
                     });
