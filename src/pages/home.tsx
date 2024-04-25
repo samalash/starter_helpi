@@ -56,7 +56,7 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome Back!</h1>
-          <h2>Here is your latest report from your Basic Questions Assessment:</h2>
+          {basicQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Basic Questions Assessment:</h2>)}
           <ol>
             <div className='w-75 mx-auto'>
           {basicQuestionsResultsArrayFormatted.map((option, index) => (
@@ -67,7 +67,7 @@ function Home() {
             </div>
           </ol>
           <div className='pt-25'>
-            <h2>Here is your latest report from your Detailed Questions Assessment:</h2>
+            {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Detailed Questions Assessment:</h2>)}
           </div>
           <ol>
             <div className='w-75 mx-auto'>
