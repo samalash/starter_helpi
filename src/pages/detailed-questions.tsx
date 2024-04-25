@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 import MultipleChoiceQuestionBlock from '../components/MultipleQuestionBlock';
 import Header from '../components/Header';
@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
+import { ProgressBar } from 'react-bootstrap';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 
@@ -92,6 +93,17 @@ function DetailedQuestionsPage() {
             });
         }
     }
+
+    const [countOfProgess, setCountOfProgess] = React.useState(0); // This is the state variable that will keep track of the progress of the quiz
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCountOfProgess(countOfProgess => (selectedAnswers.filter(answer => answer !== "").length / questions.length * 100));
+
+
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
     
     return (
         <div>
@@ -163,6 +175,7 @@ function DetailedQuestionsPage() {
                     }
                 </div>
             </div>
+            <ProgressBar animated now={countOfProgess} />
             <Footer />
         </div>
     );
