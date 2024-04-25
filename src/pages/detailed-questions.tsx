@@ -146,13 +146,15 @@ function DetailedQuestionsPage() {
                             "Submit Answers"}
                         </Button>
                     </p>
+                    {resultCreated ?
                     <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
-                        {resultCreated ? 
-                        detailedQuestionsResultsArrayFormatted.map((option, index) => (
+                        {detailedQuestionsResultsArrayFormatted.map((option, index) => (
                             <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
-                        )) :
-                        ""}
-                    </p>
+                        ))
+                        }
+                    </p> :
+                    <p></p>
+                    }
                 </div>
             </div>
             <Footer />
