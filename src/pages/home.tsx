@@ -22,10 +22,14 @@ const parseCareerOption = (optionString: string): CareerOptionInterface => {
 }
 
 
-function Home() {
+function Home(props: { reload: boolean}) {
+  props.reload && window.location.reload();
+
   const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
   const [detailedQuestionsResultsArrayFormatted, setDetailedQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
+
   useEffect(() => {
+
     setBasicQuestionsResultsArrayFormatted([]);
     setDetailedQuestionsResultsArrayFormatted([]);
 
