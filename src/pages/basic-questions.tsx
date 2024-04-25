@@ -12,9 +12,9 @@ import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 
-const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
-const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
-basicQuestionsResultsArray.shift();
+let basicQuestionsResults = "";
+let basicQuestionsResultsArray:string[] = [];
+
 
 function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
@@ -28,7 +28,7 @@ function parseCareerOption(optionString: string): CareerOptionInterface {
 }
 
 let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
 
 
 
@@ -44,7 +44,7 @@ async function generateResponse(prompt:string):Promise<string> {
     return response?.choices[0].message.content ?? "Error generating message!";
 }
 
-console.log(generateResponse("Who are you?"));
+
 
 const questions:string[] = [
     "You prefer a structured and organized work environment with clear guidelines.", 
@@ -80,6 +80,10 @@ function BasicQuestionsPage() {
                         if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
                             setResultCreated(true);
+                            basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+                            basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+                            basicQuestionsResultsArray.shift();
+                            basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                         }
                         setProcessing(false);
                     });
