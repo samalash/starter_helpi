@@ -39,7 +39,7 @@ async function generateResponse(prompt:string):Promise<string> {
             { role: "user", content: "I am a user that took the questionaire and will provide my answers to the questionnaire for you to analyze and make 3 career recommendations." },
             { role: "user", content: prompt }
         ],
-        model: "gpt-4-turbo",
+        model: "gpt-3.5-turbo-0125",
     });
     return response?.choices[0].message.content ?? "Error generating message!";
 }
