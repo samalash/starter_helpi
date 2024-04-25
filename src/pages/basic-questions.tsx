@@ -74,7 +74,7 @@ function BasicQuestionsPage() {
                 console.log(listPromptResponse);
                 if (listPromptResponse !== "Error generating message!"){
                     localStorage.setItem("basic-questions-list-jobs", listPromptResponse);
-                    const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
+                    const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, surround it with two asterisks on each side and follow it with a \":\" symbol (For example: \"1. **Technician**:\") and then provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
                     generateResponse(reportPromptString).then((reportPromptResponse) => {
                         console.log(reportPromptResponse);
                         if (reportPromptResponse !== "Error generating message!"){
