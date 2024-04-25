@@ -80,6 +80,7 @@ function DetailedQuestionsPage() {
                             detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
                             detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
                             detailedQuestionsResultsArray.shift();
+                            detailedQuestionsResultsArrayFormatted = [];
                             detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                             localStorage.setItem("isSignedIn", "true");
                         }
@@ -98,7 +99,7 @@ function DetailedQuestionsPage() {
             <Header/>
             </div>
             <div>
-                <div className="flex-container mw-75 ml-60">
+                <div className="flex-container mw-75 mx-auto">
                     <MultipleChoiceQuestionBlock 
                         question={questions[0]}
                         possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
