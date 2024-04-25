@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import { Button } from 'react-bootstrap';
@@ -9,31 +10,37 @@ import { CareerOption } from '../components/CareerOption';
 const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
 
-function parseCareerOption(optionString: string): CareerOptionInterface {
+const parseCareerOption = (optionString: string): CareerOptionInterface => {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
   const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
-  
+
   return {
     title,
     description
   };
 }
 
-//Basic Questions
-const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
-const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
-basicQuestionsResultsArray.shift();
-const basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
-
-const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
-const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
-detailedQuestionsResultsArray.shift();
-const detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
-detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
 
 function Home() {
+  const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
+  const [detailedQuestionsResultsArrayFormatted, setDetailedQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
+  useEffect(() => {
+    setBasicQuestionsResultsArrayFormatted([]);
+    setDetailedQuestionsResultsArrayFormatted([]);
+
+    const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+    const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+    basicQuestionsResultsArray.shift();
+    basicQuestionsResultsArray.map((value) => setBasicQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
+
+    const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
+    const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
+    detailedQuestionsResultsArray.shift();
+    detailedQuestionsResultsArray.map((value) => setDetailedQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Intentionally left empty to only run once
 
   return (
     <div className="App">
@@ -49,7 +56,7 @@ function Home() {
       ) : (
         <div>
           <h1 className="pb-3">Welcome Back!</h1>
-          <h2>Here is your latest report from your Basic Questions Assessment:</h2>
+          {basicQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Basic Questions Assessment:</h2>)}
           <ol>
             <div className='w-75 mx-auto'>
           {basicQuestionsResultsArrayFormatted.map((option, index) => (
@@ -60,7 +67,7 @@ function Home() {
             </div>
           </ol>
           <div className='pt-25'>
-            <h2>Here is your latest report from your Detailed Questions Assessment:</h2>
+            {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Detailed Questions Assessment:</h2>)}
           </div>
           <ol>
             <div className='w-75 mx-auto'>
