@@ -28,14 +28,17 @@ function Home() {
   useEffect(() => {
     setBasicQuestionsResultsArrayFormatted([]);
     setDetailedQuestionsResultsArrayFormatted([]);
+
     const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
     const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
     basicQuestionsResultsArray.shift();
     basicQuestionsResultsArray.map((value) => setBasicQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
+
     const detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
     const detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
     detailedQuestionsResultsArray.shift();
     detailedQuestionsResultsArray.map((value) => setDetailedQuestionsResultsArrayFormatted((prev) => [...prev, parseCareerOption(value)]));
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Intentionally left empty to only run once
 
