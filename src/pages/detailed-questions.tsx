@@ -81,6 +81,7 @@ function DetailedQuestionsPage() {
                             detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
                             detailedQuestionsResultsArray.shift();
                             detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+                            localStorage.setItem("isSignedIn", "true");
                         }
                         setProcessing(false);
                     });

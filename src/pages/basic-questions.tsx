@@ -80,6 +80,7 @@ function BasicQuestionsPage() {
                         if (reportPromptResponse !== "Error generating message!"){
                             localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
                             setResultCreated(true);
+                            localStorage.setItem("isSignedIn", "true");
                         }
                         setProcessing(false);
                     });
@@ -113,13 +114,15 @@ function BasicQuestionsPage() {
                             "Submit Answers"}
                         </Button>
                     </p>
+                    {resultCreated ?
                     <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
-                        {resultCreated ? 
-                        basicQuestionsResultsArrayFormatted.map((option, index) => (
+                        {basicQuestionsResultsArrayFormatted.map((option, index) => (
                             <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
-                        )) :
-                        ""}
-                    </p>
+                        ))
+                        }
+                    </p> :
+                    <p></p>
+                    }
                 </div>
             </div>
             <Footer />
