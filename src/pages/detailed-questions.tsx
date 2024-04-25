@@ -80,6 +80,7 @@ function DetailedQuestionsPage() {
                             detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
                             detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
                             detailedQuestionsResultsArray.shift();
+                            detailedQuestionsResultsArrayFormatted = [];
                             detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                             localStorage.setItem("isSignedIn", "true");
                         }
