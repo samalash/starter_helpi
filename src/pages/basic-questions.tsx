@@ -105,7 +105,7 @@ function BasicQuestionsPage() {
 
         }, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [selectedAnswers]);
 
     return (
         <div>

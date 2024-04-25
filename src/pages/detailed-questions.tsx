@@ -99,11 +99,9 @@ function DetailedQuestionsPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setCountOfProgess(countOfProgess => (selectedAnswers.filter(answer => answer !== "").length / questions.length * 100));
-
-
         }, 1000);
         return () => clearInterval(interval);
-    }, []);
+    }, [selectedAnswers]);
     
     return (
         <div>
