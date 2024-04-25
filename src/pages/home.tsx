@@ -45,11 +45,13 @@ function Home() {
           <h1 className="pb-3">Welcome Back!</h1>
           <h2>Here is your latest report from your Basic Questions Assessment:</h2>
           <ol>
+            <div className='w-75 mx-auto'>
           {basicQuestionsResultsArrayFormatted.map((option, index) => (
             <li>
               <CareerOption key={index} title={option.title} description={option.description} />
             </li>
           ))}
+            </div>
           </ol>
           <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
         </div>
