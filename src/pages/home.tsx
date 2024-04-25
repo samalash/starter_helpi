@@ -61,7 +61,9 @@ function Home() {
           <Button href="#/detailed-questions" className="ml-4">Detailed Questions</Button>
         </div>
       </div>
-      <Footer />
+      <div className='pt-25'>
+        <Footer />
+      </div>
     </div>
   );
 }
