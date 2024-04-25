@@ -138,11 +138,21 @@ function DetailedQuestionsPage() {
                     />
 
                 </div>
-                <div>
-
-                </div>
-                <div>
-
+                <div className="mb-5">
+                    <p className="text-center">
+                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing}>
+                            {processing ? 
+                            <Spinner></Spinner> :
+                            "Submit Answers"}
+                        </Button>
+                    </p>
+                    <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
+                        {resultCreated ? 
+                        detailedQuestionsResultsArrayFormatted.map((option, index) => (
+                            <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
+                        )) :
+                        ""}
+                    </p>
                 </div>
             </div>
             <Footer />
