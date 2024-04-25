@@ -9,11 +9,11 @@ import { CareerOption } from '../components/CareerOption';
 const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
 
-function parseCareerOption(optionString: string): CareerOptionInterface {
+const parseCareerOption = (optionString: string): CareerOptionInterface => {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
   const description = splitString.slice(1).join(':').trim(); // Join the remaining parts and trim whitespace
-  
+
   return {
     title,
     description
