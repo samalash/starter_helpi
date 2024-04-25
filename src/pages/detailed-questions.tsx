@@ -54,7 +54,7 @@ const questions:string[] = [
 ];
 
 function DetailedQuestionsPage() {
-    const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
+    const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
