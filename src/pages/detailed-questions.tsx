@@ -3,6 +3,11 @@ import '../App.css';
 import MultipleChoiceQuestionBlock from '../components/MultipleQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import OpenAI from "openai";
+import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
+import { CareerOptionInterface } from '../types';
+import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 
 function DetailedQuestionsPage() {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
