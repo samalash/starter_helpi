@@ -109,6 +109,7 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
             <div className="pb-3">
             <Header/>
             </div>
+            { openai ?
             <div>
                 <div className="flex-container mw-75 mx-auto">
                     <MultipleChoiceQuestionBlock 
@@ -173,8 +174,12 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
                     <p></p>
                     }
                 </div>
+                <ProgressBar animated now={countOfProgess} />
+            </div> :
+            <div className="flex-container py-5 my-5">
+                <p className="mx-auto my-auto"><b>Error:</b> Please enter a valid OpenAI API key in the footer below.</p>
             </div>
-            <ProgressBar animated now={countOfProgess} />
+            }
             <Footer />
         </div>
     );
