@@ -10,8 +10,31 @@ import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 import { ProgressBar } from 'react-bootstrap';
 
-
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
+const gptModel:string = "gpt-3.5-turbo-0125";
+let openaiKeyValid:boolean = false;
+
+async function testResponse():Promise<void> {
+    if (!openai || localStorage.getItem("MYKEY") === null) {
+        openaiKeyValid = false;
+        console.log("OpenAI API key is invalid by openai check.");
+        return;
+    }
+    try {await openai?.chat.completions.create({
+        messages: [
+            { role: "user", content: "ping" }
+        ],
+        model: gptModel,
+        max_tokens: 5
+    });
+    } catch (error) {
+        openaiKeyValid = false;
+        console.log("OpenAI API key is invalid.");
+        return;
+    }
+    openaiKeyValid = true;
+    console.log("OpenAI API key is valid.");
+}
 
 let basicQuestionsResults = "";
 let basicQuestionsResultsArray:string[] = [];
@@ -45,7 +68,6 @@ async function generateResponse(prompt:string):Promise<string> {
 }
 
 
-
 const questions:string[] = [
     "You prefer a structured and organized work environment with clear guidelines.", 
     "You're more interested in practical, hands-on tasks than theoretical concepts.",
@@ -61,37 +83,45 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
     console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
+    const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
 
     const handleQuizSubmit = () =>{
         if (!selectedAnswers.includes("")){
             setProcessing(true);
-            const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
-            console.log(questionsAndAnswersString);
-            localStorage.setItem("basic-questions-answers", questionsAndAnswersString);
-            const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
-            console.log(listPromptString);
-            generateResponse(listPromptString).then((listPromptResponse) => {
-                console.log(listPromptResponse);
-                if (listPromptResponse !== "Error generating message!"){
-                    localStorage.setItem("basic-questions-list-jobs", listPromptResponse);
-                    const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, surround it with two asterisks on each side and follow it with a \":\" symbol (For example: \"1. **Technician**:\") and then provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
-                    generateResponse(reportPromptString).then((reportPromptResponse) => {
-                        console.log(reportPromptResponse);
-                        if (reportPromptResponse !== "Error generating message!"){
-                            localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
-                            setResultCreated(true);
-                            basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
-                            basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
-                            basicQuestionsResultsArray.shift();
-                            basicQuestionsResultsArrayFormatted = [];
-                            basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
-                            localStorage.setItem("isSignedIn", "true");
-                            props.setReload(true);
-                        }
-                        setProcessing(false);
-                    });
-                } else {
+            testResponse().then(() => {
+                if (!openaiKeyValid) {
+                    setShowKeyErrorMessage(true);
                     setProcessing(false);
+                } else {
+                    const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
+                    console.log(questionsAndAnswersString);
+                    localStorage.setItem("basic-questions-answers", questionsAndAnswersString);
+                    const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
+                    console.log(listPromptString);
+                    generateResponse(listPromptString).then((listPromptResponse) => {
+                        console.log(listPromptResponse);
+                        if (listPromptResponse !== "Error generating message!"){
+                            localStorage.setItem("basic-questions-list-jobs", listPromptResponse);
+                            const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, surround it with two asterisks on each side and follow it with a \":\" symbol (For example: \"1. **Technician**:\") and then provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
+                            generateResponse(reportPromptString).then((reportPromptResponse) => {
+                                console.log(reportPromptResponse);
+                                if (reportPromptResponse !== "Error generating message!"){
+                                    localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
+                                    setResultCreated(true);
+                                    basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
+                                    basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
+                                    basicQuestionsResultsArray.shift();
+                                    basicQuestionsResultsArrayFormatted = [];
+                                    basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+                                    localStorage.setItem("isSignedIn", "true");
+                                    props.setReload(true);
+                                }
+                                setProcessing(false);
+                            });
+                        } else {
+                            setProcessing(false);
+                        }
+                    });
                 }
             });
         }
@@ -131,6 +161,14 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
                             "Submit Answers"}
                         </Button>
                     </p>
+                    {showKeyErrorMessage ?
+                    <div className="flex-container">
+                        <p className="mx-auto my-auto">
+                            <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
+                        </p>
+                    </div> :
+                    <p></p>
+                    }
                     {resultCreated ?
                     <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
                         {basicQuestionsResultsArrayFormatted.map((option, index) => (
@@ -141,8 +179,8 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
                     <p></p>
                     }
                 </div>
+                <ProgressBar animated now={countOfProgess} />
             </div>
-            <ProgressBar animated now={countOfProgess} />
             <Footer />
         </div>
     );
