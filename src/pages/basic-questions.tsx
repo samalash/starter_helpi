@@ -155,7 +155,7 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
                 </div>
                 <div className="mb-5">
                     <p className="text-center">
-                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing}>
+                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                             {processing ? 
                             <Spinner></Spinner> :
                             "Submit Answers"}
