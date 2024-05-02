@@ -6,10 +6,9 @@ function Header(){
   const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
 return(
-  <Navbar bg="primary" variant="dark">
+  <Navbar bg="primary" variant="dark" className="px-4">
     <Navbar.Brand href="#/">Career Helpi</Navbar.Brand>
     <Nav className="mr-auto">
-      <Nav.Link href="#/">Home</Nav.Link>
       <Nav.Link href="#/basic-questions">Basic Questions</Nav.Link>
       <Nav.Link href="#/detailed-questions">Detailed Questions</Nav.Link>
     </Nav>
