@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (66 ms)
+  ✕ renders learn react link (55 ms)
 
   ● renders learn react link
 
@@ -16,7 +16,7 @@ FAIL src/App.test.tsx
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
           [36m<nav[39m
-            [33mclass[39m=[32m"navbar navbar-expand navbar-dark bg-primary"[39m
+            [33mclass[39m=[32m"px-4 navbar navbar-expand navbar-dark bg-primary"[39m
           [36m>[39m
             [36m<a[39m
               [33mclass[39m=[32m"navbar-brand"[39m
@@ -27,13 +27,6 @@ FAIL src/App.test.tsx
             [36m<div[39m
               [33mclass[39m=[32m"mr-auto navbar-nav"[39m
             [36m>[39m
-              [36m<a[39m
-                [33mclass[39m=[32m"nav-link"[39m
-                [33mdata-rr-ui-event-key[39m=[32m"#/"[39m
-                [33mhref[39m=[32m"#/"[39m
-              [36m>[39m
-                [0mHome[0m
-              [36m</a>[39m
               [36m<a[39m
                 [33mclass[39m=[32m"nav-link"[39m
                 [33mdata-rr-ui-event-key[39m=[32m"#/basic-questions"[39m
@@ -201,7 +194,7 @@ All files                    |   19.81 |     11.9 |    7.81 |   21.82 |
   CareerOption.tsx           |      50 |      100 |       0 |      50 | 2                        
   CareerOptionQuizPages.tsx  |      50 |      100 |       0 |      50 | 2                        
   Footer.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23                  
-  Header.tsx                 |      50 |       50 |      50 |   66.66 | 16                       
+  Header.tsx                 |      50 |       50 |      50 |   66.66 | 15                       
   MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7-28                     
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13                     
  src/pages                   |   17.41 |    10.52 |    4.34 |   19.49 |                          
@@ -212,5 +205,5 @@ All files                    |   19.81 |     11.9 |    7.81 |   21.82 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.485 s
+Time:        3.406 s
 Ran all test suites.
