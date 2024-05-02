@@ -1,7 +1,7 @@
 
 
 
-function MultipleChoiceQuestionBlock({question, possibleAnswers, selectedAnswers, index}: {question: string, possibleAnswers: string[], selectedAnswers: string[], index: number}) {
+function MultipleChoiceQuestionBlock({question, possibleAnswers, handleAnswerChange, index}: {question: string, possibleAnswers: string[], handleAnswerChange:(index:number,answer:string) => void, index: number}) {
 
 
     return (
@@ -10,22 +10,22 @@ function MultipleChoiceQuestionBlock({question, possibleAnswers, selectedAnswers
             <div className="vstack gap-2 mw-100">
 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {selectedAnswers[index] = possibleAnswers[0];}} />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,possibleAnswers[0]);}} />
                     {possibleAnswers[0]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {selectedAnswers[index] = possibleAnswers[1];}} />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,possibleAnswers[1]);}} />
                     {possibleAnswers[1]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {selectedAnswers[index] = possibleAnswers[2];}} />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,possibleAnswers[2]);}} />
                     {possibleAnswers[2]}
                 </label>
                 
                 <label className="form-check-label">
-                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {selectedAnswers[index] = possibleAnswers[3];}} />
+                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,possibleAnswers[3]);}} />
                     {possibleAnswers[3]}
                 </label>
             </div>

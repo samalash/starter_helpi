@@ -84,6 +84,10 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
+
+    const handleAnswerChange = (index:number, answer:string) => {
+        setSelectedAnswers((prev) => prev.map((value, i) => i === index ? answer : value));
+    }
     
     const handleQuizSubmit = () =>{
         if (!selectedAnswers.includes("")){
@@ -146,43 +150,43 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
                     <MultipleChoiceQuestionBlock 
                         question={questions[0]}
                         possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={0}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[1]}
                         possibleAnswers={["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={1}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[2]}
                         possibleAnswers={["Structured and organized", "Dynamic and flexible", "Collaborative and team-oriented", "Independent and autonomous"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={2}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[3]}
                         possibleAnswers={["Analyzing and strategizing", "Thinking creatively and innovatively", "Seeking support from colleagues", "Tackling issues head-on with practical solutions"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={3}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[4]}
                         possibleAnswers={["Formal education and training programs", "Hands-on experience and trial-and-error", "Mentorship and guidance from others", "Self-directed learning and exploration"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={4}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[5]}
                         possibleAnswers={["Face-to-face meetings and discussions", "Written communication (emails, reports)", "Phone calls or video conferences", "It depends on the situation"]}
-                        selectedAnswers={selectedAnswers}
+                        handleAnswerChange={handleAnswerChange}
                         index={5}
                     />
                     <MultipleChoiceQuestionBlock 
                         question={questions[6]}
                         possibleAnswers={["Leader or coordinator", "Creative thinker or idea generator", "Team player or collaborator", "Observer or contributor as needed"]}
-                        selectedAnswers={selectedAnswers} 
+                        handleAnswerChange={handleAnswerChange} 
                         index={6}
                     />
 
