@@ -85,6 +85,10 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
 
+    const handleAnswerChange = (index:number, answer:string) => {
+        setSelectedAnswers(selectedAnswers.map((value, i) => i === index ? answer : value));
+    }
+
     const handleQuizSubmit = () =>{
         if (!selectedAnswers.includes("")){
             setProcessing(true);
@@ -145,13 +149,13 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
             </div>
             <div>
                 <div className="flex-container mw-75 mx-auto">
-                    <TrueFalseQuestionBlock question={questions[0]} selectedAnswers={selectedAnswers} index={0}    />
-                    <TrueFalseQuestionBlock question={questions[1]} selectedAnswers={selectedAnswers} index={1}    />
-                    <TrueFalseQuestionBlock question={questions[2]} selectedAnswers={selectedAnswers} index={2}    />
-                    <TrueFalseQuestionBlock question={questions[3]} selectedAnswers={selectedAnswers} index={3}    />
-                    <TrueFalseQuestionBlock question={questions[4]} selectedAnswers={selectedAnswers} index={4}    />
-                    <TrueFalseQuestionBlock question={questions[5]} selectedAnswers={selectedAnswers} index={5}    />
-                    <TrueFalseQuestionBlock question={questions[6]} selectedAnswers={selectedAnswers} index={6}    />
+                    <TrueFalseQuestionBlock question={questions[0]} handleAnswerChange={handleAnswerChange} index={0}    />
+                    <TrueFalseQuestionBlock question={questions[1]} handleAnswerChange={handleAnswerChange} index={1}    />
+                    <TrueFalseQuestionBlock question={questions[2]} handleAnswerChange={handleAnswerChange} index={2}    />
+                    <TrueFalseQuestionBlock question={questions[3]} handleAnswerChange={handleAnswerChange} index={3}    />
+                    <TrueFalseQuestionBlock question={questions[4]} handleAnswerChange={handleAnswerChange} index={4}    />
+                    <TrueFalseQuestionBlock question={questions[5]} handleAnswerChange={handleAnswerChange} index={5}    />
+                    <TrueFalseQuestionBlock question={questions[6]} handleAnswerChange={handleAnswerChange} index={6}    />
                 </div>
                 <div className="mb-5">
                     <p className="text-center">
