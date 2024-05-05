@@ -3,6 +3,7 @@ import Home from './pages/home';
 import BasicQuestionsPage from './pages/basic-questions';
 import DetailedQuestionsPage from './pages/detailed-questions';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
 
 

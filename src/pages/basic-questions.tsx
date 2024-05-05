@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import '../App.css';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
