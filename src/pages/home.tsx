@@ -6,8 +6,8 @@ import Footer from '../components/Footer';
 import { CareerOptionInterface } from '../types';
 import { CareerOption } from '../components/CareerOption';
 
+// Check if the user is signed in
 const isSignedIn = localStorage.getItem("isSignedIn") === "true";
-
 
 const parseCareerOption = (optionString: string): CareerOptionInterface => {
   const splitString = optionString.split(':'); // Split the string by ':'
@@ -22,16 +22,19 @@ const parseCareerOption = (optionString: string): CareerOptionInterface => {
 
 
 function Home(props: { reload: boolean}) {
+  // Performs a reload to properly refresh the page and get around hash router limitations
   props.reload && window.location.reload();
 
+  // Location to store the results of both questions assessments
   const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
   const [detailedQuestionsResultsArrayFormatted, setDetailedQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);
 
   useEffect(() => {
-
+    // Clear the arrays to avoid duplicates
     setBasicQuestionsResultsArrayFormatted([]);
     setDetailedQuestionsResultsArrayFormatted([]);
 
+    // Retrieve the results from localStorage and parse them
     const basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
     const basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
     basicQuestionsResultsArray.shift();
