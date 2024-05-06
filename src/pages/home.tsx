@@ -50,40 +50,45 @@ function Home(props: { reload: boolean}) {
   return (
     <div className="App">
       <Header />
-      <div className="min-vh-100 pt-30">
+      <div className="size-full pt-30 pb-20">
         { !isSignedIn ? (
-        <div>
-          <h1 className="pb-3">Career Helpi</h1>
+        <div className='pt-56 pb-56'>
+          <h1 className="pb-3 text-center">Career Helpi</h1>
           <div className="w-50 mx-auto">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed ligula nec ante vehicula dignissim vel nec ex. Sed condimentum metus vitae elit condimentum, sed hendrerit libero sodales. Integer eget arcu id ligula fringilla ullamcorper. Sed in magna nec metus viverra accumsan. Integer in augue a ligula congue eleifend non sed nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Nullam ut lorem sapien. Nunc accumsan purus id tortor gravida, ut consequat quam feugiat. Sed consectetur, lorem vitae condimentum congue, nisl nulla suscipit urna, non fermentum mauris sapien non nisi. Curabitur bibendum ipsum vitae lectus sollicitudin, nec ultrices elit sodales. Nunc id elit eget tortor malesuada malesuada. Sed euismod purus nec justo vulputate, ut lacinia dui dignissim. Etiam in velit nec est scelerisque ultrices. Sed dignissim velit non tincidunt posuere.</p>
           </div>
         </div>
       ) : (
-        <div>
-          <h1 className="pb-3">Welcome Back!</h1>
-          {basicQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Basic Questions Assessment:</h2>)}
-          <ol>
-            <div className='w-75 mx-auto'>
-          {basicQuestionsResultsArrayFormatted.map((option, index) => (
-            <li>
-              <CareerOption key={index} title={option.title} description={option.description} />
-            </li>
-          ))}
-            </div>
-          </ol>
-          <div className='pt-25'>
-            {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Detailed Questions Assessment:</h2>)}
+        <div className='flex justify-center'>
+        <div className="pt-20 w-2/3">
+            <h1 className="text-center pb-10">Welcome Back!</h1>
+            {basicQuestionsResultsArrayFormatted.length > 1 && (<h2 className="text-center w-full">Here is your latest report from your Basic Questions Assessment:</h2>)}
+          <div className="pt-8 pb-8">
+            <ol>
+              <div>
+            {basicQuestionsResultsArrayFormatted.map((option, index) => (
+              <li>
+                <CareerOption key={index} title={option.title} description={option.description} />
+              </li>
+            ))}
+              </div>
+            </ol>
           </div>
-          <ol>
-            <div className='w-75 mx-auto'>
-          {detailedQuestionsResultsArrayFormatted.map((option, index) => (
-            <li>
-              <CareerOption key={index} title={option.title} description={option.description} />
-            </li>
-          ))}
-            </div>
-          </ol>
-          <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
+          <div className="pt-8"></div>
+          <div className="pt-8 pb-8">
+              {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2 className='text-center w-full'>Here is your latest report from your Detailed Questions Assessment:</h2>)}
+            <ol>
+              <div>
+            {detailedQuestionsResultsArrayFormatted.map((option, index) => (
+              <li>
+                <CareerOption key={index} title={option.title} description={option.description} />
+              </li>
+            ))}
+              </div>
+            </ol>
+            <h2 className="pt-32 text-center">Take the quiz again:</h2>
+          </div>
+        </div>
         </div>
       )}
         <div className="pt-10">
