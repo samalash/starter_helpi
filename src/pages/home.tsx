@@ -63,15 +63,15 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
         <div className='flex justify-center'>
         <div className="pt-20 w-2/3">
           <FadeIn>
-            <h1 className="text-center pb-10">Welcome Back!</h1>
-            {basicQuestionsResultsArrayFormatted.length > 1 && (<h2 className="text-center w-full">Here is your latest report from your Basic Questions Assessment:</h2>)}
+            {darkMode ? (<h1 className="text-center text-white pb-10">Career Helpi</h1>) : (<h1 className="text-center text-black pb-10">Career Helpi</h1>)}
+            {basicQuestionsResultsArrayFormatted.length > 1 && darkMode ? (<h2 className='text-center w-full text-white'>Here is your latest report from your Basic Questions Assessment:</h2>) : (<h2 className='text-center w-full text-black'>Here is your latest report from your Basic Questions Assessment:</h2>)}
           </FadeIn>
           <div className="pt-8 pb-8">
             <ol>
               <div>
             {basicQuestionsResultsArrayFormatted.map((option, index) => (
               <li>
-                <CareerOption key={index} title={option.title} description={option.description} />
+                <CareerOption key={index} title={option.title} description={option.description} darkMode={darkMode} />
               </li>
             ))}
               </div>
@@ -87,7 +87,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
                 <div>
               {detailedQuestionsResultsArrayFormatted.map((option, index) => (
                 <li>
-                  <CareerOption key={index} title={option.title} description={option.description} />
+                  <CareerOption key={index} title={option.title} description={option.description} darkMode={darkMode} />
                 </li>
               ))}
                 </div>
@@ -102,8 +102,8 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
       )}
       <FadeIn>
         <div className="pt-2 flex justify-center">
-          <Button href="#/basic-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Basic Questions</Button>
-          <Button href="#/detailed-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Detailed Questions</Button>
+          <Button href="#/basic-questions" variant="dark" style={{backgroundColor: `${darkMode ? "rgb(0,130,192)" : "rgb(0,180,216)"}`, borderStyle: `none`}} className="transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Basic Questions</Button>
+          <Button href="#/detailed-questions" variant="dark" style={{backgroundColor: `${darkMode ? "rgb(0,130,192)" : "rgb(0,180,216)"}`, borderStyle: `none`}} className="ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Detailed Questions</Button>
         </div>
       </FadeIn>
       </div>
