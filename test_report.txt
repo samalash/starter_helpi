@@ -234,12 +234,12 @@
         at FadeIn (/home/runner/work/starter_helpi/starter_helpi/src/components/FadeIn.tsx:4:34)
         at div
         at div
-        at div
         at Home (/home/runner/work/starter_helpi/starter_helpi/src/pages/home.tsx:23:17)
         at RenderedRoute (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/hooks.tsx:657:26)
         at Routes (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:504:3)
         at Router (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:413:13)
         at HashRouter (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router-dom/index.tsx:808:3)
+        at div
         at div
         at ThemeWrapper (/home/runner/work/starter_helpi/starter_helpi/src/components/ThemWrapper.tsx:1:25)
         at div
@@ -287,12 +287,12 @@
     
         at FadeIn (/home/runner/work/starter_helpi/starter_helpi/src/components/FadeIn.tsx:4:34)
         at div
-        at div
         at Home (/home/runner/work/starter_helpi/starter_helpi/src/pages/home.tsx:23:17)
         at RenderedRoute (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/hooks.tsx:657:26)
         at Routes (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:504:3)
         at Router (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router/lib/components.tsx:413:13)
         at HashRouter (/home/runner/work/starter_helpi/starter_helpi/node_modules/react-router-dom/index.tsx:808:3)
+        at div
         at div
         at ThemeWrapper (/home/runner/work/starter_helpi/starter_helpi/src/components/ThemWrapper.tsx:1:25)
         at div
@@ -336,7 +336,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (142 ms)
+  ✕ renders learn react link (131 ms)
 
   ● renders learn react link
 
@@ -402,12 +402,12 @@ All files                    |   22.56 |    15.95 |   11.76 |   24.75 |
   ThemWrapper.tsx            |     100 |       50 |     100 |     100 | 3                        
   TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-13                     
  src/pages                   |   17.41 |    10.52 |    4.34 |   19.49 |                          
-  basic-questions.tsx        |    9.33 |     3.12 |       0 |   10.29 | 16-34,41-45,57-65,80-177 
-  detailed-questions.tsx     |    9.21 |     3.12 |       0 |   10.29 | 16-34,42-46,58-66,80-211 
-  home.tsx                   |   62.96 |       50 |   22.22 |   73.91 | 12-16,76-92              
+  basic-questions.tsx        |    9.33 |     3.12 |       0 |   10.29 | 16-34,41-45,57-65,80-176 
+  detailed-questions.tsx     |    9.21 |     3.12 |       0 |   10.29 | 16-34,42-46,58-66,80-210 
+  home.tsx                   |   62.96 |       50 |   22.22 |   73.91 | 12-16,73-89              
 -----------------------------|---------|----------|---------|---------|--------------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.502 s
+Time:        3.519 s
 Ran all test suites.
