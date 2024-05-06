@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
@@ -145,7 +144,6 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
         // SVG from Vecteezy: https://www.vecteezy.com/vector-art/2037924-abstract-blue-background-with-beautiful-fluid-shapes
         <div className="App bg-fixed bg-cover" style={{ backgroundImage: `url('https://samalash.github.io/starter_helpi/abstrack_backhround_blue_.svg')` }}>
             <div className="pb-3">
-            <Header/>
             </div>
             <div>
                 <div className="flex-container mw-75 mx-auto">
