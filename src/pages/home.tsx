@@ -49,7 +49,9 @@ function Home(props: { reload: boolean}) {
 
   return (
     // SVG from Vecteezy: https://www.vecteezy.com/vector-art/2037924-abstract-blue-background-with-beautiful-fluid-shapes
-    <div className="App bg-fixed bg-cover" style={{ backgroundImage: `url('/abstrack_backhround_blue_.svg')` }}>
+    // For some reason I can only reference public assets only locally, so I had to use a URL. Very strange behavior
+    // but it probably has to do with the way cra with hash router works on gh pages. Not the first thing to break because of it.
+    <div className="App bg-fixed bg-cover" style={{ backgroundImage: `url('https://samalash.github.io/starter_helpi/abstrack_backhround_blue_.svg')` }}> 
       <Header />
       <div className="size-full pt-30 pb-20">
         { !isSignedIn ? (
