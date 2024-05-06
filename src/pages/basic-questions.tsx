@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';

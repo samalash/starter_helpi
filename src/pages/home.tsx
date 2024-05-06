@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CareerOptionInterface } from '../types';
 import { CareerOption } from '../components/CareerOption';
