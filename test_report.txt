@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (58 ms)
+  ✕ renders learn react link (57 ms)
 
   ● renders learn react link
 
@@ -72,20 +72,22 @@ FAIL src/App.test.tsx
               [36m</div>[39m
             [36m</div>[39m
             [36m<div[39m
-              [33mclass[39m=[32m"pt-10"[39m
+              [33mclass[39m=[32m"pt-2 flex justify-center"[39m
             [36m>[39m
               [36m<a[39m
-                [33mclass[39m=[32m"btn btn-primary"[39m
+                [33mclass[39m=[32m"transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110 btn btn-dark"[39m
                 [33mhref[39m=[32m"#/basic-questions"[39m
                 [33mrole[39m=[32m"button"[39m
+                [33mstyle[39m=[32m"background-color: rgb(0, 180, 216); border-style: none;"[39m
                 [33mtabindex[39m=[32m"0"[39m
               [36m>[39m
                 [0mBasic Questions[0m
               [36m</a>[39m
               [36m<a[39m
-                [33mclass[39m=[32m"ml-4 btn btn-primary"[39m
+                [33mclass[39m=[32m"ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110 btn btn-dark"[39m
                 [33mhref[39m=[32m"#/detailed-questions"[39m
                 [33mrole[39m=[32m"button"[39m
+                [33mstyle[39m=[32m"background-color: rgb(0, 180, 216); border-style: none;"[39m
                 [33mtabindex[39m=[32m"0"[39m
               [36m>[39m
                 [0mDetailed Questions[0m
@@ -194,7 +196,7 @@ All files                    |   19.81 |     11.9 |    7.81 |   21.82 |
   reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10                     
   types.ts                   |       0 |        0 |       0 |       0 |                          
  src/components              |   38.46 |       50 |   13.33 |      40 |                          
-  CareerOption.tsx           |      50 |      100 |       0 |      50 | 2                        
+  CareerOption.tsx           |      50 |      100 |       0 |      50 | 4                        
   CareerOptionQuizPages.tsx  |      50 |      100 |       0 |      50 | 2                        
   Footer.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23                  
   Header.tsx                 |      50 |       50 |      50 |   66.66 | 15                       
@@ -208,5 +210,5 @@ All files                    |   19.81 |     11.9 |    7.81 |   21.82 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.368 s
+Time:        3.415 s
 Ran all test suites.
