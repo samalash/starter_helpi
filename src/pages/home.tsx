@@ -96,15 +96,19 @@ function Home(props: { reload: boolean}) {
                 </div>
               </ol>
             </div>
-            <h2 className="pt-32 text-center">Take the quiz again:</h2>
+            <FadeIn>
+              <h2 className="pt-32 text-center">Take the quiz again:</h2>
+            </FadeIn>
           </div>
         </div>
         </div>
       )}
+      <FadeIn>
         <div className="pt-2 flex justify-center">
           <Button href="#/basic-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Basic Questions</Button>
           <Button href="#/detailed-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Detailed Questions</Button>
         </div>
+      </FadeIn>
       </div>
       <div className='pt-25'>
         <Footer />
