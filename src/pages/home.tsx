@@ -65,8 +65,10 @@ function Home(props: { reload: boolean}) {
       ) : (
         <div className='flex justify-center'>
         <div className="pt-20 w-2/3">
+          <FadeIn>
             <h1 className="text-center pb-10">Welcome Back!</h1>
             {basicQuestionsResultsArrayFormatted.length > 1 && (<h2 className="text-center w-full">Here is your latest report from your Basic Questions Assessment:</h2>)}
+          </FadeIn>
           <div className="pt-8 pb-8">
             <ol>
               <div>
