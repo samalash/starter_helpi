@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { CareerOptionInterface } from '../types';
 import { CareerOption } from '../components/CareerOption';
+import FadeIn from '../components/FadeIn';
 
 // Check if the user is signed in
 const isSignedIn = localStorage.getItem("isSignedIn") === "true";

@@ -1,8 +1,11 @@
 import { Button } from "react-bootstrap";
+import FadeIn from "./FadeIn";
 
 export const CareerOption = (props: { title: string, description: string }) => {
   return (
     <div>
+      <FadeIn>
+
       <div className="p-5 pb-3 shadow-xl rounded-xl bg-[rgb(0,180,216)] text-white">
         <h3 className="text-left">{props.title}</h3>
         <p>{props.description}</p>
@@ -13,6 +16,7 @@ export const CareerOption = (props: { title: string, description: string }) => {
         </div>
       </div>
       <div className="pt-5"></div>
+      </FadeIn>
     </div>
   );
 };
