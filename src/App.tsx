@@ -18,30 +18,22 @@ function App() {
 
   return (
     <div className='App'>
-      <ThemeWrapper darkMode={darkMode}>
-        <Router>
-          <Routes>
-            <Route path="/" element={
-              <div>
-                <Header></Header>
-                <Home reload={reload} />
-              </div>
+      <Header />
+        <ThemeWrapper darkMode={darkMode}>
+          <Router>
+            <Routes>
+              <Route path="/" element={
+                  <Home reload={reload} />
+                } />
+              <Route path="/basic-questions" element={
+                  <BasicQuestionsPage setReload={setReload} />
               } />
-            <Route path="/basic-questions" element={
-              <div>
-                <Header></Header>
-                <BasicQuestionsPage setReload={setReload} />
-              </div>
-            } />
-            <Route path="/detailed-questions" element={
-              <div>
-                <Header></Header>
-                <DetailedQuestionsPage setReload={setReload} />
-              </div>
-            } />
-          </Routes>
-        </Router>
-      </ThemeWrapper>
+              <Route path="/detailed-questions" element={
+                  <DetailedQuestionsPage setReload={setReload} />
+              } />
+            </Routes>
+          </Router>
+        </ThemeWrapper>
     </div>
   );
 }
