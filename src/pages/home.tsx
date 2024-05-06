@@ -82,16 +82,20 @@ function Home(props: { reload: boolean}) {
           </div>
           <div className="pt-8"></div>
           <div className="pt-8 pb-8">
+            <FadeIn>
               {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2 className='text-center w-full'>Here is your latest report from your Detailed Questions Assessment:</h2>)}
-            <ol>
-              <div>
-            {detailedQuestionsResultsArrayFormatted.map((option, index) => (
-              <li>
-                <CareerOption key={index} title={option.title} description={option.description} />
-              </li>
-            ))}
-              </div>
-            </ol>
+            </FadeIn>
+            <div className='pt-8 pb-8'>
+              <ol>
+                <div>
+              {detailedQuestionsResultsArrayFormatted.map((option, index) => (
+                <li>
+                  <CareerOption key={index} title={option.title} description={option.description} />
+                </li>
+              ))}
+                </div>
+              </ol>
+            </div>
             <h2 className="pt-32 text-center">Take the quiz again:</h2>
           </div>
         </div>
