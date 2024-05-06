@@ -142,7 +142,7 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
     }, [selectedAnswers]);
 
     return (
-        <div>
+        <div className="App">
             <div className="pb-3">
             <Header/>
             </div>

@@ -141,7 +141,7 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
     }, [selectedAnswers]);
     
     return (
-        <div>
+        <div className="App">
             <div className="pb-3">
             <Header/>
             </div>
