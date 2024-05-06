@@ -20,9 +20,9 @@ const parseCareerOption = (optionString: string): CareerOptionInterface => {
 }
 
 
-function Home(props: { reload: boolean}) {
+function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
   // Performs a reload to properly refresh the page and get around hash router limitations
-  props.reload && window.location.reload();
+  reload && window.location.reload();
 
   // Location to store the results of both questions assessments
   const [basicQuestionsResultsArrayFormatted, setBasicQuestionsResultsArrayFormatted] = useState<CareerOptionInterface[]>([]);

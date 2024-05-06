@@ -76,7 +76,7 @@ const questions:string[] = [
     "What role do you typically take in group settings?"
 ];
 
-function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
+function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
@@ -116,7 +116,7 @@ function DetailedQuestionsPage(props: {setReload: (value: boolean) => void}) {
                                     detailedQuestionsResultsArrayFormatted = [];
                                     detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                                     localStorage.setItem("isSignedIn", "true");
-                                    props.setReload(true);
+                                    setReload(true);
                                 }
                                 setProcessing(false);
                             });
