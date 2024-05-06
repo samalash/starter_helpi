@@ -3,7 +3,7 @@ import FadeIn from "./FadeIn";
 
 export const CareerOption = ({ title, description, darkMode }: {title: string, description: string, darkMode: boolean}) => {
   return (
-    <div>
+    <>
       <FadeIn>
       <div className={`p-5 pb-3 shadow-xl rounded-xl ${darkMode ? "bg-[rgb(0,130,192)]" : "bg-[rgb(0,180,216)]"} text-white`}>
         <FadeIn>
@@ -18,6 +18,6 @@ export const CareerOption = ({ title, description, darkMode }: {title: string, d
       </div>
       <div className="pt-5"></div>
       </FadeIn>
-    </div>
+    </>
   );
 };
