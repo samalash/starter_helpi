@@ -6,12 +6,13 @@ function TrueFalseQuestionBlock({question, handleAnswerChange, index}: {question
         <div className="ml-4 mw-20rem pt-10">
             <p>{question}</p>
             <div>
-                <input className="form-check-input" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,"True");}} />
-                <label className="form-check-label ml-2">
+                <label className="form-check-label">
+                    <input className="form-check-input mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,"True");}} />
                     True
                 </label>
-                <input className="form-check-input ml-10" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,"False");}} />
-                <label className="form-check-label ml-2">
+                
+                <label className="form-check-label">
+                    <input className="form-check-input ml-10 mr-2" type="radio" name={String(index)} onChange={() => {handleAnswerChange(index,"False");}} />
                     False
                 </label>
             </div>
