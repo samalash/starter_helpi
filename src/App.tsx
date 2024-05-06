@@ -5,6 +5,7 @@ import DetailedQuestionsPage from './pages/detailed-questions';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
+import ThemeWrapper from './components/ThemWrapper';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home reload={reload} />} />
+        <Route path="/" element={<ThemeWrapper><Home reload={reload} /></ThemeWrapper>} />
         <Route path="/basic-questions" element={<BasicQuestionsPage setReload={setReload} />} />
         <Route path="/detailed-questions" element={<DetailedQuestionsPage setReload={setReload} />} />
       </Routes>

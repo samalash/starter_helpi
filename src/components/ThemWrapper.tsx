@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
-const DarkMode = () => {
+const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
     const [darkMode, setDarkMode] = useState<boolean>(localStorage?.theme === 'dark' ? true : false);
 
   useEffect(() => {
   localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
   return (
-    <div></div>
+    <span className={`${darkMode && "dark"} dark:bg-slate-900`}>{children}</span>
   )
 }
 
-export default DarkMode;
+export default ThemeWrapper;
