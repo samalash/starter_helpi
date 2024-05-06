@@ -48,7 +48,8 @@ function Home(props: { reload: boolean}) {
   }, []); // Intentionally left empty to only run once
 
   return (
-    <div className="App">
+    // SVG from Vecteezy: https://www.vecteezy.com/vector-art/2037924-abstract-blue-background-with-beautiful-fluid-shapes
+    <div className="App bg-fixed bg-cover" style={{ backgroundImage: `url('/abstrack_backhround_blue_.svg')` }}>
       <Header />
       <div className="size-full pt-30 pb-20">
         { !isSignedIn ? (
