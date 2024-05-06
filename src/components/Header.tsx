@@ -2,7 +2,7 @@ import { Button} from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function Header(){
+function Header({setDarkMode, darkMode}: {setDarkMode: (value: boolean) => void, darkMode: boolean}){
   const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 
 return(
@@ -15,6 +15,7 @@ return(
     <Button className="ms-auto" onClick={() => {localStorage.setItem("isSignedIn", JSON.stringify(!isSignedIn)); window.location.reload();}}>
       <span>{isSignedIn ? "Sign out" : "Sign in"}</span>
     </Button>
+    <Button onClick={() => setDarkMode(!darkMode)}>{darkMode ? "Dark" : "Light"}</Button>
   </Navbar>
 );
 }

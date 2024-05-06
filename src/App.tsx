@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <Header setDarkMode={setDarkMode} darkMode={darkMode} />
         <ThemeWrapper darkMode={darkMode}>
           <Router>
             <Routes>
