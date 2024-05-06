@@ -23,13 +23,13 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={
-                  <Home reload={reload} />
+                  <Home reload={reload} darkMode={darkMode} />
                 } />
               <Route path="/basic-questions" element={
-                  <BasicQuestionsPage setReload={setReload} />
+                  <BasicQuestionsPage setReload={setReload} darkMode={darkMode} />
               } />
               <Route path="/detailed-questions" element={
-                  <DetailedQuestionsPage setReload={setReload} />
+                  <DetailedQuestionsPage setReload={setReload} darkMode={darkMode} />
               } />
             </Routes>
           </Router>
