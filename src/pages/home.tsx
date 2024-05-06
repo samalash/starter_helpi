@@ -71,7 +71,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
               <div>
             {basicQuestionsResultsArrayFormatted.map((option, index) => (
               <li>
-                <CareerOption key={index} title={option.title} description={option.description} />
+                <CareerOption key={index} title={option.title} description={option.description} darkMode={darkMode} />
               </li>
             ))}
               </div>
@@ -87,7 +87,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
                 <div>
               {detailedQuestionsResultsArrayFormatted.map((option, index) => (
                 <li>
-                  <CareerOption key={index} title={option.title} description={option.description} />
+                  <CareerOption key={index} title={option.title} description={option.description} darkMode={darkMode} />
                 </li>
               ))}
                 </div>
