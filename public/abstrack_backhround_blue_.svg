@@ -36,15 +36,15 @@
          offset="0"
          id="stop20" />
       <stop
-         style="stop-opacity:1;stop-color:#ffffff"
+         style="stop-opacity:0;stop-color:#ffffff"
          offset="0.34095136"
          id="stop22" />
       <stop
-         style="stop-opacity:1;stop-color:#ffffff"
+         style="stop-opacity:0;stop-color:#ffffff"
          offset="0.47486"
          id="stop24" />
       <stop
-         style="stop-opacity:1;stop-color:#ffffff"
+         style="stop-opacity:0;stop-color:#ffffff"
          offset="0.81584051"
          id="stop26" />
       <stop
