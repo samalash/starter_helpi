@@ -76,7 +76,7 @@ const questions:string[] = [
     "Job security and stability seem important to you."
 ];
 
-function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
+function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
@@ -116,7 +116,7 @@ function BasicQuestionsPage(props: { setReload: (reload: boolean) => void }) {
                                     basicQuestionsResultsArrayFormatted = [];
                                     basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                                     localStorage.setItem("isSignedIn", "true");
-                                    props.setReload(true);
+                                    setReload(true);
                                 }
                                 setProcessing(false);
                             });
