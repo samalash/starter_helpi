@@ -92,9 +92,9 @@ function Home(props: { reload: boolean}) {
         </div>
         </div>
       )}
-        <div className="pt-10">
-          <Button href="#/basic-questions">Basic Questions</Button>
-          <Button href="#/detailed-questions" className="ml-4">Detailed Questions</Button>
+        <div className="pt-2 flex justify-center">
+          <Button href="#/basic-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Basic Questions</Button>
+          <Button href="#/detailed-questions" variant="dark" style={{backgroundColor: `rgb(0,180,216)`, borderStyle: `none`}} className="ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Detailed Questions</Button>
         </div>
       </div>
       <div className='pt-25'>
