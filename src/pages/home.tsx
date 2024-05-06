@@ -74,16 +74,21 @@ function Home(props: { reload: boolean}) {
               </div>
             </ol>
           </div>
-          <ol>
-            <div className='w-75 mx-auto'>
-          {detailedQuestionsResultsArrayFormatted.map((option, index) => (
-            <li>
-              <CareerOption key={index} title={option.title} description={option.description} />
-            </li>
-          ))}
-            </div>
-          </ol>
-          <h2 className="mb--10 pb-3 pt-30">Take the quiz again:</h2>
+          <div className="pt-8"></div>
+          <div className="pt-8 pb-8">
+              {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2 className='text-center w-full'>Here is your latest report from your Detailed Questions Assessment:</h2>)}
+            <ol>
+              <div>
+            {detailedQuestionsResultsArrayFormatted.map((option, index) => (
+              <li>
+                <CareerOption key={index} title={option.title} description={option.description} />
+              </li>
+            ))}
+              </div>
+            </ol>
+            <h2 className="pt-32 text-center">Take the quiz again:</h2>
+          </div>
+        </div>
         </div>
       )}
         <div className="pt-10">
