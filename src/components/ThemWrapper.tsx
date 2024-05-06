@@ -1,6 +1,10 @@
 const ThemeWrapper = ({ darkMode, children }: { darkMode:boolean, children: React.ReactNode }) => {
   return (
-    <span className={`${darkMode && "dark"} dark:bg-slate-900`}>{children}</span>
+    <body className={`${darkMode && "dark"}`}>
+    <div className="bg-white dark:bg-slate-900 text-black dark:text-white">
+      {children}
+    </div>
+    </body>
   )
 }
 
