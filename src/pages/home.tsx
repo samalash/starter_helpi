@@ -59,20 +59,20 @@ function Home(props: { reload: boolean}) {
           </div>
         </div>
       ) : (
-        <div>
-          <h1 className="pb-3">Welcome Back!</h1>
-          {basicQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Basic Questions Assessment:</h2>)}
-          <ol>
-            <div className='w-75 mx-auto'>
-          {basicQuestionsResultsArrayFormatted.map((option, index) => (
-            <li>
-              <CareerOption key={index} title={option.title} description={option.description} />
-            </li>
-          ))}
-            </div>
-          </ol>
-          <div className='pt-25'>
-            {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2>Here is your latest report from your Detailed Questions Assessment:</h2>)}
+        <div className='flex justify-center'>
+        <div className="pt-20 w-2/3">
+            <h1 className="text-center pb-10">Welcome Back!</h1>
+            {basicQuestionsResultsArrayFormatted.length > 1 && (<h2 className="text-center w-full">Here is your latest report from your Basic Questions Assessment:</h2>)}
+          <div className="pt-8 pb-8">
+            <ol>
+              <div>
+            {basicQuestionsResultsArrayFormatted.map((option, index) => (
+              <li>
+                <CareerOption key={index} title={option.title} description={option.description} />
+              </li>
+            ))}
+              </div>
+            </ol>
           </div>
           <ol>
             <div className='w-75 mx-auto'>
