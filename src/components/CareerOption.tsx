@@ -10,8 +10,8 @@ export const CareerOption = ({ title, description, darkMode }: {title: string, d
         <p>{description}</p>
         <h4>Here are some job listings that match this career:</h4>
         <div>
-          <Button href={`https://www.indeed.com/jobs?q=${title}`} target="_blank" rel="noreferrer" variant="light">Indeed</Button>
-          <Button href={`https://www.linkedin.com/jobs/search/?keywords=${title}`} target="_blank" rel="noreferrer" variant="light" className="m-4">LinkedIn Jobs</Button>
+          <Button href={`https://www.indeed.com/jobs?q=${title}`} target="_blank" rel="noreferrer" variant={`${darkMode ? "dark" : "light"}`}>Indeed</Button>
+          <Button href={`https://www.linkedin.com/jobs/search/?keywords=${title}`} target="_blank" rel="noreferrer" variant={`${darkMode ? "dark" : "light"}`} className="m-4">LinkedIn Jobs</Button>
         </div>
       </div>
       <div className="pt-5"></div>
