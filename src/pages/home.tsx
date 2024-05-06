@@ -48,10 +48,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
   }, []); // Intentionally left empty to only run once
 
   return (
-    // SVG from Vecteezy: https://www.vecteezy.com/vector-art/2037924-abstract-blue-background-with-beautiful-fluid-shapes
-    // For some reason I can only reference public assets only locally, so I had to use a URL. Very strange behavior
-    // but it probably has to do with the way cra with hash router works on gh pages. Not the first thing to break because of it.
-    <div className="App bg-fixed bg-cover" style={{ backgroundImage: `url('https://samalash.github.io/starter_helpi/abstrack_backhround_blue_.svg')` }}> 
+    <>
       <div className="size-full pt-30 pb-20">
         { !isSignedIn ? (
         <div className='pt-56 pb-56'>
@@ -113,7 +110,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
       <div className='pt-25'>
         <Footer />
       </div>
-    </div>
+    </>
   );
 }
 
