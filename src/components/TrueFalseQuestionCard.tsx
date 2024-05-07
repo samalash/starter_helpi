@@ -1,7 +1,22 @@
 import FadeIn from './FadeIn';
 import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
 
-function TrueFalseQuestionCard({darkMode}: {darkMode: boolean}){
+function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, darkMode}: {questions: string[], handleAnswerChange:(index:number,answer:string) => void, selectedAnswers: string[], darkMode: boolean}){
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = () => {
+        if (currentIndex < questions.length-1){
+            setCurrentIndex(currentIndex+1);
+        }
+    }
+
+    const handlePrevious = () => {
+        if (currentIndex > 0){
+            setCurrentIndex(currentIndex-1);
+        }
+    }
+    
     return (
         <>
             <div className='flex justify-center'>
@@ -11,18 +26,18 @@ function TrueFalseQuestionCard({darkMode}: {darkMode: boolean}){
                                 <h4>Job security and stability seem important to you.</h4>
                                 <div className="mb-2">
                                     <label className="form-check-label">
-                                        <input className="form-check-input mr-2" type="radio" />
+                                        <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"True");}} />
                                         True
                                     </label>
                                     
-                                    <label className="form-check-label">
-                                        <input className="form-check-input ml-10 mr-2" type="radio" />
+                                    <label className="form-check-label ml-10">
+                                        <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"False");}} />
                                         False
                                     </label>
                                 </div>
-                                <div>
-                                    <Button variant={`${darkMode ? "dark" : "light"}`} className="mr-5">Previous</Button>
-                                    <Button variant={`${darkMode ? "dark" : "light"}`} className="ml-5">Next</Button>
+                                <div className="grid grid-cols-2 mx-auto w-1/4">
+                                    <Button variant={`${darkMode ? "dark" : "light"}`} className="mr-5" onClick={handlePrevious} disabled={currentIndex === 0}>Previous</Button>
+                                    <Button variant={`${darkMode ? "dark" : "light"}`} className="ml-5" onClick={handleNext} disabled={currentIndex === questions.length-1}>Next</Button>
                                 </div>
                             </div>
                         </FadeIn>
