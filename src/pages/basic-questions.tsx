@@ -128,9 +128,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                 }
             });
         }
-        else{
-            setShowCompletionAlert(true);
-        }
     }
 
     const [countOfProgess, setCountOfProgess] = React.useState(0); // This is the state variable that will keep track of the progress of the quiz
@@ -194,13 +191,13 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                     }
                     
                 </div>
-                <ProgressBar animated now={countOfProgess} />
-                    <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
+                <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
                         <Alert.Heading>All questions completed!</Alert.Heading>
                         <p>
                             You have completed all the questions. Click on "Submit Answers" to proceed.
                         </p>
                     </Alert>
+                <ProgressBar animated now={countOfProgess} />
             </div>
             <Footer />
         </>
