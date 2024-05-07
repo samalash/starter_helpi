@@ -151,47 +151,43 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
 
     return (
         <>
-            <div className="pb-3">
+            <div className="flex-container mw-75 mx-auto">
+                <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
             </div>
-            <div>
-                <div className="flex-container mw-75 mx-auto">
-                    <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-                </div>
-                <div className="mb-5">
-                    <p className="text-center">
-                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
-                            {processing ? 
-                            <Spinner></Spinner> :
-                            "Submit Answers"}
-                        </Button>
+            <div className="mb-5">
+                <p className="text-center">
+                    <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                        {processing ? 
+                        <Spinner></Spinner> :
+                        "Submit Answers"}
+                    </Button>
+                </p>
+                {showKeyErrorMessage ?
+                <div className="flex-container">
+                    <p className="mx-auto my-auto">
+                        <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                     </p>
-                    {showKeyErrorMessage ?
-                    <div className="flex-container">
-                        <p className="mx-auto my-auto">
-                            <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
-                        </p>
-                    </div> :
-                    <p></p>
+                </div> :
+                <p></p>
+                }
+                {resultCreated ?
+                <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
+                    {basicQuestionsResultsArrayFormatted.map((option, index) => (
+                        <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
+                    ))
                     }
-                    {resultCreated ?
-                    <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
-                        {basicQuestionsResultsArrayFormatted.map((option, index) => (
-                            <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
-                        ))
-                        }
-                    </p> :
-                    <p></p>
-                    }
-                    
-                </div>
-                <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
-                        <Alert.Heading>All questions completed!</Alert.Heading>
-                        <p>
-                            You have completed all the questions. Click on "Submit Answers" to proceed.
-                        </p>
-                    </Alert>
-                <ProgressBar animated now={countOfProgess} />
+                </p> :
+                <p></p>
+                }
+                
             </div>
+            <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
+                    <Alert.Heading>All questions completed!</Alert.Heading>
+                    <p>
+                        You have completed all the questions. Click on "Submit Answers" to proceed.
+                    </p>
+                </Alert>
+            <ProgressBar animated now={countOfProgess} />
             <Footer />
         </>
         
