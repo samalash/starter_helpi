@@ -7,6 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 import { ProgressBar, Alert } from 'react-bootstrap';
+import TrueFalseQuestionCard from '../components/TrueFalseQuestionCard';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-3.5-turbo-0125";
@@ -197,6 +198,9 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                             You have completed all the questions. Click on "Submit Answers" to proceed.
                         </p>
                     </Alert>
+
+                <TrueFalseQuestionCard darkMode={darkMode} />
+
                 <ProgressBar animated now={countOfProgess} />
             </div>
             <Footer />
