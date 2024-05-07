@@ -26,12 +26,18 @@ function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, 
                                 <h4 className="mt-5 mb-16 h-5">{questions[currentIndex]}</h4>
                                 <div className="mb-10 grid grid-cols-2 mx-auto w-1/4">
                                     <label className="form-check-label">
+                                        {selectedAnswers[currentIndex] === "True" ?
+                                        <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"True");}} checked /> :
                                         <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"True");}} />
+                                        }
                                         True
                                     </label>
                                     
                                     <label className="form-check-label ml-10">
+                                        {selectedAnswers[currentIndex] === "False" ?
+                                        <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"False");}} checked /> :
                                         <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"False");}} />
+                                        }
                                         False
                                     </label>
                                 </div>
