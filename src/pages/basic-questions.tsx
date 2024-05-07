@@ -170,14 +170,13 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                 </div> :
                 <p></p>
                 }
-                {resultCreated ?
+                {resultCreated &&
                 <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
                     {basicQuestionsResultsArrayFormatted.map((option, index) => (
                         <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
                     ))
                     }
-                </p> :
-                <p></p>
+                </p>
                 }
                 
             </div>
