@@ -23,8 +23,8 @@ function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, 
                     <div className="pt-20 pb-8 w-2/3">
                         <FadeIn key={`${darkMode}`}>
                             <div className={`p-3 shadow-xl rounded-xl ${darkMode ? "bg-[rgb(0,130,192)]" : "bg-gradient-to-r from-[#00B4D8] to-blue-500"} text-white text-center`}>
-                                <h4>Job security and stability seem important to you.</h4>
-                                <div className="mb-2">
+                                <h4 className="mt-5 mb-16 h-5">{questions[currentIndex]}</h4>
+                                <div className="mb-10 grid grid-cols-2 mx-auto w-1/4">
                                     <label className="form-check-label">
                                         <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"True");}} />
                                         True
