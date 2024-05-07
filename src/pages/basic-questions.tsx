@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
-import { ProgressBar } from 'react-bootstrap';
+import { ProgressBar, Alert } from 'react-bootstrap';
 import TrueFalseQuestionCard from '../components/TrueFalseQuestionCard';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
@@ -83,6 +83,7 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
+    const [showCompletionAlert, setShowCompletionAlert] = useState<boolean>(false);
 
     const handleAnswerChange = (index:number, answer:string) => {
         setSelectedAnswers(selectedAnswers.map((value, i) => i === index ? answer : value));
@@ -137,9 +138,18 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
             setCountOfProgess(countOfProgess => (selectedAnswers.filter(answer => answer !== "").length / questions.length * 100));
 
 
-        }, 1000);
+        }, 100);
         return () => clearInterval(interval);
     }, [selectedAnswers]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if(countOfProgess === 100) 
+                setShowCompletionAlert(true)
+        }, 100);
+        return () => clearInterval(interval);
+    });
+
 
     return (
         <>
@@ -181,11 +191,19 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                     </p> :
                     <p></p>
                     }
+                    
                 </div>
+                <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
+                        <Alert.Heading>All questions completed!</Alert.Heading>
+                        <p>
+                            You have completed all the questions. Click on "Submit Answers" to proceed.
+                        </p>
+                    </Alert>
                 <ProgressBar animated now={countOfProgess} />
             </div>
             <Footer />
         </>
+        
     );
 
 }
