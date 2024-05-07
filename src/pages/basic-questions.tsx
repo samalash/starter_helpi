@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
@@ -157,13 +156,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
             <div>
                 <div className="flex-container mw-75 mx-auto">
                     <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-                    <TrueFalseQuestionBlock question={questions[0]} handleAnswerChange={handleAnswerChange} index={0}    />
-                    <TrueFalseQuestionBlock question={questions[1]} handleAnswerChange={handleAnswerChange} index={1}    />
-                    <TrueFalseQuestionBlock question={questions[2]} handleAnswerChange={handleAnswerChange} index={2}    />
-                    <TrueFalseQuestionBlock question={questions[3]} handleAnswerChange={handleAnswerChange} index={3}    />
-                    <TrueFalseQuestionBlock question={questions[4]} handleAnswerChange={handleAnswerChange} index={4}    />
-                    <TrueFalseQuestionBlock question={questions[5]} handleAnswerChange={handleAnswerChange} index={5}    />
-                    <TrueFalseQuestionBlock question={questions[6]} handleAnswerChange={handleAnswerChange} index={6}    />
                 </div>
                 <div className="mb-5">
                     <p className="text-center">
