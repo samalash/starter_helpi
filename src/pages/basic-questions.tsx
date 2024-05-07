@@ -157,6 +157,7 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
             </div>
             <div>
                 <div className="flex-container mw-75 mx-auto">
+                    <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                     <TrueFalseQuestionBlock question={questions[0]} handleAnswerChange={handleAnswerChange} index={0}    />
                     <TrueFalseQuestionBlock question={questions[1]} handleAnswerChange={handleAnswerChange} index={1}    />
                     <TrueFalseQuestionBlock question={questions[2]} handleAnswerChange={handleAnswerChange} index={2}    />
@@ -198,9 +199,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                             You have completed all the questions. Click on "Submit Answers" to proceed.
                         </p>
                     </Alert>
-
-                <TrueFalseQuestionCard darkMode={darkMode} />
-
                 <ProgressBar animated now={countOfProgess} />
             </div>
             <Footer />
