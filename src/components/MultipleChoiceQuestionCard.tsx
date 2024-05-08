@@ -58,7 +58,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                                     {possibleAnswers[currentIndex][3]}
                                 </label>
                             </div>
-                            <div className="grid grid-cols-2 mx-auto w-1/4">
+                            <div className="grid grid-cols-2 mx-auto w-1/2">
                                 <Button variant={`${darkMode ? "dark" : "light"}`} className="mr-5" onClick={handlePrevious} disabled={currentIndex === 0}>Previous</Button>
                                 <Button variant={`${darkMode ? "dark" : "light"}`} className="ml-5" onClick={handleNext} disabled={currentIndex === questions.length-1}>Next</Button>
                             </div>
