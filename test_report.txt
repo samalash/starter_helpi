@@ -336,7 +336,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (130 ms)
+  ✕ renders learn react link (127 ms)
 
   ● renders learn react link
 
@@ -398,7 +398,7 @@ All files                        |   19.92 |    12.14 |     9.3 |   21.75 |
   FadeIn.tsx                     |     100 |       50 |     100 |     100 | 13                       
   Footer.tsx                     |      60 |       50 |   33.33 |      60 | 9,17-23                  
   Header.tsx                     |      40 |       50 |   33.33 |      50 | 15-18                    
-  MultipleChoiceQuestionCard.tsx |       0 |        0 |       0 |       0 | 7-56                     
+  MultipleChoiceQuestionCard.tsx |       0 |        0 |       0 |       0 | 7-55                     
   ThemWrapper.tsx                |     100 |       50 |     100 |     100 | 3                        
   TrueFalseQuestionCard.tsx      |       0 |        0 |       0 |       0 | 6-38                     
  src/pages                       |   16.58 |     11.9 |     3.7 |    18.6 |                          
@@ -409,5 +409,5 @@ All files                        |   19.92 |    12.14 |     9.3 |   21.75 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.766 s
+Time:        4.036 s
 Ran all test suites.
