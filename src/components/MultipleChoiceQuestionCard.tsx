@@ -25,7 +25,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                     <FadeIn key={`${darkMode}`}>
                         <div className={`p-3 shadow-xl rounded-xl ${darkMode ? "bg-[rgb(0,130,192)]" : "bg-gradient-to-r from-[#00B4D8] to-blue-500"} text-white text-center`}>
                             <h4 className="mt-5 mb-16 h-5">{questions[currentIndex]}</h4>
-                            <div className="mb-10 grid grid-cols-2 mx-auto w-1/4">
+                            <div className="mb-20 grid grid-cols-2 mx-auto w-3/4">
                                 <label className="form-check-label">
                                     {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][0] ?
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][0]);}} checked /> :
@@ -42,7 +42,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                                     {possibleAnswers[currentIndex][1]}
                                 </label>
 
-                                <label className="form-check-label">
+                                <label className="form-check-label mt-10">
                                     {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][2] ?
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][2]);}} checked /> :
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][2]);}} />
@@ -50,7 +50,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                                     {possibleAnswers[currentIndex][2]}
                                 </label>
 
-                                <label className="form-check-label ml-10">
+                                <label className="form-check-label ml-10 mt-10">
                                     {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][3] ?
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][3]);}} checked /> :
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][3]);}} />
