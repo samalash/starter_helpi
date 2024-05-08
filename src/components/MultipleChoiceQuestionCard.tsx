@@ -41,6 +41,22 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                                     }
                                     {possibleAnswers[currentIndex][1]}
                                 </label>
+
+                                <label className="form-check-label">
+                                    {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][2] ?
+                                    <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][2]);}} checked /> :
+                                    <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][2]);}} />
+                                    }
+                                    {possibleAnswers[currentIndex][2]}
+                                </label>
+
+                                <label className="form-check-label ml-10">
+                                    {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][3] ?
+                                    <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][3]);}} checked /> :
+                                    <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][3]);}} />
+                                    }
+                                    {possibleAnswers[currentIndex][3]}
+                                </label>
                             </div>
                             <div className="grid grid-cols-2 mx-auto w-1/4">
                                 <Button variant={`${darkMode ? "dark" : "light"}`} className="mr-5" onClick={handlePrevious} disabled={currentIndex === 0}>Previous</Button>
