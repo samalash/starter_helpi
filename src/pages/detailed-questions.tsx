@@ -76,6 +76,16 @@ const questions:string[] = [
     "What role do you typically take in group settings?"
 ];
 
+const possibleAnswers:string[][] = [
+    ["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"],
+    ["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"],
+    ["Structured and organized", "Dynamic and flexible", "Collaborative and team-oriented", "Independent and autonomous"],
+    ["Analyzing and strategizing", "Thinking creatively and innovatively", "Seeking support from colleagues", "Tackling issues head-on with practical solutions"],
+    ["Formal education and training programs", "Hands-on experience and trial-and-error", "Mentorship and guidance from others", "Self-directed learning and exploration"],
+    ["Face-to-face meetings and discussions", "Written communication (emails, reports)", "Phone calls or video conferences", "It depends on the situation"],
+    ["Leader or coordinator", "Creative thinker or idea generator", "Team player or collaborator", "Observer or contributor as needed"]
+];
+
 function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     console.log(setSelectedAnswers);
