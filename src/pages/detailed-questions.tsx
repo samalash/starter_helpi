@@ -89,7 +89,6 @@ const possibleAnswers:string[][] = [
 
 function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
-    console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
