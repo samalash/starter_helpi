@@ -336,7 +336,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (132 ms)
+  ✕ renders learn react link (135 ms)
 
   ● renders learn react link
 
@@ -383,32 +383,31 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
------------------------------|---------|----------|---------|---------|--------------------------
-File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s        
------------------------------|---------|----------|---------|---------|--------------------------
-All files                    |   20.15 |    13.93 |    9.63 |   22.07 |                          
- src                         |   31.25 |       25 |      50 |   31.25 |                          
-  App.tsx                    |     100 |       50 |     100 |     100 | 12-15                    
-  index.tsx                  |       0 |      100 |     100 |       0 | 8-20                     
-  reportWebVitals.ts         |       0 |        0 |       0 |       0 | 3-10                     
-  types.ts                   |       0 |        0 |       0 |       0 |                          
- src/components              |   34.09 |    16.66 |      16 |   34.88 |                          
-  CareerOption.tsx           |      50 |        0 |       0 |      50 | 5                        
-  CareerOptionQuizPages.tsx  |      50 |      100 |       0 |      50 | 2                        
-  FadeIn.tsx                 |     100 |       50 |     100 |     100 | 13                       
-  Footer.tsx                 |      60 |       50 |   33.33 |      60 | 9,17-23                  
-  Header.tsx                 |      40 |       50 |   33.33 |      50 | 15-18                    
-  MultipleQuestionBlock.tsx  |       0 |      100 |       0 |       0 | 7-28                     
-  ThemWrapper.tsx            |     100 |       50 |     100 |     100 | 3                        
-  TrueFalseQuestionBlock.tsx |       0 |      100 |       0 |       0 | 5-15                     
-  TrueFalseQuestionCard.tsx  |       0 |        0 |       0 |       0 | 6-39                     
- src/pages                   |   16.06 |     11.9 |     3.7 |   18.02 |                          
-  basic-questions.tsx        |    8.53 |     2.94 |       0 |    9.45 | 16-34,41-45,57-65,80-183 
-  detailed-questions.tsx     |    8.33 |     2.94 |       0 |    9.33 | 16-34,42-46,58-66,80-226 
-  home.tsx                   |   62.96 |       50 |   22.22 |   73.91 | 12-16,73-89              
------------------------------|---------|----------|---------|---------|--------------------------
+----------------------------|---------|----------|---------|---------|--------------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s        
+----------------------------|---------|----------|---------|---------|--------------------------
+All files                   |    20.4 |    13.93 |      10 |   22.36 |                          
+ src                        |   31.25 |       25 |      50 |   31.25 |                          
+  App.tsx                   |     100 |       50 |     100 |     100 | 12-15                    
+  index.tsx                 |       0 |      100 |     100 |       0 | 8-20                     
+  reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10                     
+  types.ts                  |       0 |        0 |       0 |       0 |                          
+ src/components             |   36.58 |    16.66 |   18.18 |    37.5 |                          
+  CareerOption.tsx          |      50 |        0 |       0 |      50 | 5                        
+  CareerOptionQuizPages.tsx |      50 |      100 |       0 |      50 | 2                        
+  FadeIn.tsx                |     100 |       50 |     100 |     100 | 13                       
+  Footer.tsx                |      60 |       50 |   33.33 |      60 | 9,17-23                  
+  Header.tsx                |      40 |       50 |   33.33 |      50 | 15-18                    
+  MultipleQuestionBlock.tsx |       0 |      100 |       0 |       0 | 7-28                     
+  ThemWrapper.tsx           |     100 |       50 |     100 |     100 | 3                        
+  TrueFalseQuestionCard.tsx |       0 |        0 |       0 |       0 | 6-39                     
+ src/pages                  |   16.06 |     11.9 |     3.7 |   18.02 |                          
+  basic-questions.tsx       |    8.53 |     2.94 |       0 |    9.45 | 16-34,41-45,57-65,80-183 
+  detailed-questions.tsx    |    8.33 |     2.94 |       0 |    9.33 | 16-34,42-46,58-66,80-226 
+  home.tsx                  |   62.96 |       50 |   22.22 |   73.91 | 12-16,73-89              
+----------------------------|---------|----------|---------|---------|--------------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.629 s
+Time:        3.576 s
 Ran all test suites.
