@@ -7,6 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 import { ProgressBar, Alert } from 'react-bootstrap';
+import MultipleChoiceQuestionCard from '../components/MultipleChoiceQuestionCard';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-3.5-turbo-0125";
@@ -163,6 +164,7 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             </div>
             <div>
                 <div className="flex-container mw-75 mx-auto">
+                    <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                     <MultipleChoiceQuestionBlock 
                         question={questions[0]}
                         possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
