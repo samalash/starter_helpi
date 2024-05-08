@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import MultipleChoiceQuestionBlock from '../components/MultipleQuestionBlock';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
@@ -164,49 +163,6 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             <div>
                 <div className="flex-container mw-75 mx-auto">
                     <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[0]}
-                        possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={0}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[1]}
-                        possibleAnswers={["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={1}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[2]}
-                        possibleAnswers={["Structured and organized", "Dynamic and flexible", "Collaborative and team-oriented", "Independent and autonomous"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={2}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[3]}
-                        possibleAnswers={["Analyzing and strategizing", "Thinking creatively and innovatively", "Seeking support from colleagues", "Tackling issues head-on with practical solutions"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={3}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[4]}
-                        possibleAnswers={["Formal education and training programs", "Hands-on experience and trial-and-error", "Mentorship and guidance from others", "Self-directed learning and exploration"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={4}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[5]}
-                        possibleAnswers={["Face-to-face meetings and discussions", "Written communication (emails, reports)", "Phone calls or video conferences", "It depends on the situation"]}
-                        handleAnswerChange={handleAnswerChange}
-                        index={5}
-                    />
-                    <MultipleChoiceQuestionBlock 
-                        question={questions[6]}
-                        possibleAnswers={["Leader or coordinator", "Creative thinker or idea generator", "Team player or collaborator", "Observer or contributor as needed"]}
-                        handleAnswerChange={handleAnswerChange} 
-                        index={6}
-                    />
-
                 </div>
                 <div className="mb-5">
                     <p className="text-center">
