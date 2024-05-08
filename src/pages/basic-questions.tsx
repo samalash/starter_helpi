@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import TrueFalseQuestionBlock from '../components/TrueFalseQuestionBlock';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
@@ -79,7 +78,6 @@ const questions:string[] = [
 
 function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
-    console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
@@ -153,54 +151,42 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
 
     return (
         <>
-            <div className="pb-3">
+            <div className="flex-container mw-75 mx-auto">
+                <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
             </div>
-            <div>
-                <div className="flex-container mw-75 mx-auto">
-                    <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-                    <TrueFalseQuestionBlock question={questions[0]} handleAnswerChange={handleAnswerChange} index={0}    />
-                    <TrueFalseQuestionBlock question={questions[1]} handleAnswerChange={handleAnswerChange} index={1}    />
-                    <TrueFalseQuestionBlock question={questions[2]} handleAnswerChange={handleAnswerChange} index={2}    />
-                    <TrueFalseQuestionBlock question={questions[3]} handleAnswerChange={handleAnswerChange} index={3}    />
-                    <TrueFalseQuestionBlock question={questions[4]} handleAnswerChange={handleAnswerChange} index={4}    />
-                    <TrueFalseQuestionBlock question={questions[5]} handleAnswerChange={handleAnswerChange} index={5}    />
-                    <TrueFalseQuestionBlock question={questions[6]} handleAnswerChange={handleAnswerChange} index={6}    />
-                </div>
-                <div className="mb-5">
-                    <p className="text-center">
-                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
-                            {processing ? 
-                            <Spinner></Spinner> :
-                            "Submit Answers"}
-                        </Button>
+            <div className="mb-5">
+                <p className="text-center">
+                    <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                        {processing ? 
+                        <Spinner></Spinner> :
+                        "Submit Answers"}
+                    </Button>
+                </p>
+                {showKeyErrorMessage ?
+                <div className="flex-container">
+                    <p className="mx-auto my-auto">
+                        <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                     </p>
-                    {showKeyErrorMessage ?
-                    <div className="flex-container">
-                        <p className="mx-auto my-auto">
-                            <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
-                        </p>
-                    </div> :
-                    <p></p>
+                </div> :
+                <p></p>
+                }
+                {resultCreated &&
+                <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
+                    {basicQuestionsResultsArrayFormatted.map((option, index) => (
+                        <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
+                    ))
                     }
-                    {resultCreated ?
-                    <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
-                        {basicQuestionsResultsArrayFormatted.map((option, index) => (
-                            <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
-                        ))
-                        }
-                    </p> :
-                    <p></p>
-                    }
-                    
-                </div>
-                <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
-                        <Alert.Heading>All questions completed!</Alert.Heading>
-                        <p>
-                            You have completed all the questions. Click on "Submit Answers" to proceed.
-                        </p>
-                    </Alert>
-                <ProgressBar animated now={countOfProgess} />
+                </p>
+                }
+                
             </div>
+            <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
+                    <Alert.Heading>All questions completed!</Alert.Heading>
+                    <p>
+                        You have completed all the questions. Click on "Submit Answers" to proceed.
+                    </p>
+                </Alert>
+            <ProgressBar animated now={countOfProgess} />
             <Footer />
         </>
         
