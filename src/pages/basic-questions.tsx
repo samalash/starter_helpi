@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Footer from '../components/Footer';
 import OpenAI from "openai";
 import Button from 'react-bootstrap/Button';
@@ -128,17 +128,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
             });
         }
     }
-
-    const [countOfProgess, setCountOfProgess] = React.useState(0); // This is the state variable that will keep track of the progress of the quiz
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if(countOfProgess === 100) 
-                setShowCompletionAlert(true)
-        }, 100);
-        return () => clearInterval(interval);
-    });
-
 
     return (
         <>
