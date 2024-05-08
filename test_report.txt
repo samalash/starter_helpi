@@ -336,7 +336,7 @@
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (128 ms)
+  ✕ renders learn react link (164 ms)
 
   ● renders learn react link
 
@@ -386,20 +386,19 @@ go away.[0m
 ---------------------------------|---------|----------|---------|---------|--------------------------
 File                             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s        
 ---------------------------------|---------|----------|---------|---------|--------------------------
-All files                        |   19.54 |    12.14 |    8.79 |   21.31 |                          
+All files                        |   19.92 |    12.14 |     9.3 |   21.75 |                          
  src                             |   31.25 |       25 |      50 |   31.25 |                          
   App.tsx                        |     100 |       50 |     100 |     100 | 12-15                    
   index.tsx                      |       0 |      100 |     100 |       0 | 8-20                     
   reportWebVitals.ts             |       0 |        0 |       0 |       0 | 3-10                     
   types.ts                       |       0 |        0 |       0 |       0 |                          
- src/components                  |   26.31 |    10.41 |   12.12 |   26.78 |                          
+ src/components                  |   28.84 |    10.41 |   14.28 |   29.41 |                          
   CareerOption.tsx               |      50 |        0 |       0 |      50 | 5                        
   CareerOptionQuizPages.tsx      |      50 |      100 |       0 |      50 | 2                        
   FadeIn.tsx                     |     100 |       50 |     100 |     100 | 13                       
   Footer.tsx                     |      60 |       50 |   33.33 |      60 | 9,17-23                  
   Header.tsx                     |      40 |       50 |   33.33 |      50 | 15-18                    
   MultipleChoiceQuestionCard.tsx |       0 |        0 |       0 |       0 | 7-56                     
-  MultipleQuestionBlock.tsx      |       0 |      100 |       0 |       0 | 7-28                     
   ThemWrapper.tsx                |     100 |       50 |     100 |     100 | 3                        
   TrueFalseQuestionCard.tsx      |       0 |        0 |       0 |       0 | 6-39                     
  src/pages                       |   16.58 |     11.9 |     3.7 |    18.6 |                          
@@ -410,5 +409,5 @@ All files                        |   19.54 |    12.14 |    8.79 |   21.31 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.767 s
+Time:        3.807 s
 Ran all test suites.
