@@ -7,6 +7,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 import { ProgressBar, Alert } from 'react-bootstrap';
+import MultipleChoiceQuestionCard from '../components/MultipleChoiceQuestionCard';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-3.5-turbo-0125";
@@ -76,9 +77,18 @@ const questions:string[] = [
     "What role do you typically take in group settings?"
 ];
 
+const possibleAnswers:string[][] = [
+    ["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"],
+    ["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"],
+    ["Structured and organized", "Dynamic and flexible", "Collaborative and team-oriented", "Independent and autonomous"],
+    ["Analyzing and strategizing", "Thinking creatively and innovatively", "Seeking support from colleagues", "Tackling issues head-on with practical solutions"],
+    ["Formal education and training programs", "Hands-on experience and trial-and-error", "Mentorship and guidance from others", "Self-directed learning and exploration"],
+    ["Face-to-face meetings and discussions", "Written communication (emails, reports)", "Phone calls or video conferences", "It depends on the situation"],
+    ["Leader or coordinator", "Creative thinker or idea generator", "Team player or collaborator", "Observer or contributor as needed"]
+];
+
 function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
-    console.log(setSelectedAnswers);
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
@@ -153,6 +163,7 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             </div>
             <div>
                 <div className="flex-container mw-75 mx-auto">
+                    <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                     <MultipleChoiceQuestionBlock 
                         question={questions[0]}
                         possibleAnswers={["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"]}
