@@ -133,8 +133,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
         <>
             <div className="flex-container mw-75 mx-auto">
                 <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-            </div>
-            <div className="mb-5">
                 <p className="text-center">
                     <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                         {processing ? 
@@ -158,7 +156,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                     }
                 </p>
                 }
-                
             </div>
             <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
                     <Alert.Heading>All questions completed!</Alert.Heading>
