@@ -92,6 +92,16 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
     const [showCompletionAlert, setShowCompletionAlert] = useState<boolean>(false);
+    const [alertDismissed, setAlertDismissed] = useState<boolean>(false);
+
+    useEffect(() => {
+        // Check if all questions have been answered
+        if (!selectedAnswers.includes("") && !showCompletionAlert) {
+            setShowCompletionAlert(true);
+        } else if (selectedAnswers.includes("") && showCompletionAlert) {
+            setShowCompletionAlert(false);
+        }
+    }, [selectedAnswers, showCompletionAlert]);
 
     const handleAnswerChange = (index:number, answer:string) => {
         setSelectedAnswers((prev) => prev.map((value, i) => i === index ? answer : value));
@@ -183,12 +193,15 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                     <p></p>
                     }
                 </div>
-                <Alert variant="info" show={showCompletionAlert} onClose={() => setShowCompletionAlert(false)} dismissible>
-                        <Alert.Heading>All questions completed!</Alert.Heading>
-                        <p>
-                            You have completed all the questions. Click on "Submit Answers" to proceed.
-                        </p>
-                    </Alert>
+                <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+    setAlertDismissed(true);
+    setShowCompletionAlert(false);
+}} dismissible>
+    <Alert.Heading>All questions completed!</Alert.Heading>
+    <p>
+        You have completed all the questions. Click on "Submit Answers" to proceed.
+    </p>
+</Alert>
                     <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             </div>
             <Footer />
