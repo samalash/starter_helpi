@@ -23,9 +23,9 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
             <div className='flex justify-center'>
                 <div className="pt-20 pb-8 w-2/3">
                     <FadeIn key={`${darkMode}`}>
-                        <div className={`p-3 shadow-xl rounded-xl ${darkMode ? "bg-[rgb(0,130,192)]" : "bg-gradient-to-r from-[#00B4D8] to-blue-500"} text-white text-center`}>
-                            <h4 className="mt-5 mb-16 h-5">{questions[currentIndex]}</h4>
-                            <div className="mb-20 grid grid-cols-2 mx-auto w-3/4">
+                        <div className={`p-3 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} text-white text-center`}>
+                            <h4 className="mt-5 pb-32 h-5">{questions[currentIndex]}</h4>
+                            <div className="pb-10 min-h-48 grid grid-cols-2 mx-auto w-3/4">
                                 <label className="form-check-label">
                                     {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][0] ?
                                     <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][0]);}} checked /> :
