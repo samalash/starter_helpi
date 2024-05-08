@@ -21,7 +21,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
     return (
         <>
             <div className='flex justify-center'>
-                <div className="pt-20 pb-8 w-2/3">
+                <div className="pt-36 pb-8 w-1/2">
                     <FadeIn key={`${darkMode}`}>
                         <div className={`p-3 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} text-white text-center`}>
                             <h4 className="mt-5 pb-32 h-5">{questions[currentIndex]}</h4>
