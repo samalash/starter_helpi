@@ -130,15 +130,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
     }
 
     const [countOfProgess, setCountOfProgess] = React.useState(0); // This is the state variable that will keep track of the progress of the quiz
-    
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCountOfProgess(countOfProgess => (selectedAnswers.filter(answer => answer !== "").length / questions.length * 100));
-
-
-        }, 100);
-        return () => clearInterval(interval);
-    }, [selectedAnswers]);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -186,7 +177,7 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                         You have completed all the questions. Click on "Submit Answers" to proceed.
                     </p>
                 </Alert>
-            <ProgressBar animated now={countOfProgess} />
+            <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             <Footer />
         </>
         
