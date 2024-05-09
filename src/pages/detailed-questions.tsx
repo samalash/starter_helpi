@@ -154,7 +154,7 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             <div className="flex-container mw-75 mx-auto mb-24">
                 <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                 <p className="text-center">
-                    <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                    <Button className="mt-1 mb-1" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                         {processing ? 
                         <Spinner></Spinner> :
                         "Submit Answers"}
