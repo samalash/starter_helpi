@@ -47,7 +47,7 @@ function Footer(){
               Detailed Questions
             </a>
           </div>
-          &copy; {new Date().getFullYear()} Company Name
+          &copy; {new Date().getFullYear()} Future Fit
         </div>
         
       </MDBFooter>

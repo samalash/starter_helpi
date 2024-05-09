@@ -7,7 +7,7 @@ function Header({setDarkMode, darkMode}: {setDarkMode: (value: boolean) => void,
 
 return(
   <Navbar bg="primary" variant="dark" className="px-2">
-    <Navbar.Brand href="#/" className='pl-2'>Career Helpi</Navbar.Brand>
+    <Navbar.Brand href="#/" className='pl-2'>Future Fit</Navbar.Brand>
     <Nav className="mr-auto">
       <Nav.Link href="#/basic-questions">Basic Questions</Nav.Link>
       <Nav.Link href="#/detailed-questions">Detailed Questions</Nav.Link>

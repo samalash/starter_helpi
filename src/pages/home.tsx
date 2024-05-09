@@ -53,9 +53,9 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
         { !isSignedIn ? (
         <div className='pt-56 pb-56'>
           <FadeIn key={`${darkMode}`}>
-            <h1 className="pb-3 text-center">Career Helpi</h1>
+            <h1 className="pb-3 text-center">Future Fit</h1>
             <div className="w-50 mx-auto">
-              <p>This application is specially designed to help you find your next career prospect. Utilizing artificial intelligence, [name] takes in your responses and generates a report of what occupations would best suit you, including job listings so you can find your next career quickly. There are two different quiz types. The basic questions page contains true or false questions and can be completed quickly and with minimal effort. The detailed questions page contains multiple choice questions that can lead to a more accurate result.</p>
+              <p>This application is specially designed to help you find your next career prospect. Utilizing artificial intelligence, Future Fit takes in your responses and generates a report of what occupations would best suit you, including job listings so you can find your next career quickly. There are two different quiz types. The basic questions page contains true or false questions and can be completed quickly and with minimal effort. The detailed questions page contains multiple choice questions that can lead to a more accurate result.</p>
             </div>
           </FadeIn>
         </div>
