@@ -151,13 +151,12 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                         "Submit Answers"}
                     </Button>
                 </p>
-                {showKeyErrorMessage ?
+                {showKeyErrorMessage &&
                 <div className="flex-container">
                     <p className="mx-auto my-auto">
                         <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                     </p>
-                </div> :
-                <p></p>
+                </div>
                 }
                 {resultCreated &&
                 <div className="mb-6">

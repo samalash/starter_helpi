@@ -165,22 +165,20 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                             "Submit Answers"}
                         </Button>
                     </p>
-                    {showKeyErrorMessage ?
+                    {showKeyErrorMessage &&
                     <div className="flex-container">
                         <p className="mx-auto my-auto">
                             <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                         </p>
-                    </div> :
-                    <p></p>
+                    </div>
                     }
-                    {resultCreated ?
+                    {resultCreated &&
                     <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
                         {detailedQuestionsResultsArrayFormatted.map((option, index) => (
                             <CareerOptionQuizPages key={index} title={option.title} description={option.description} darkMode={darkMode} />
                         ))
                         }
-                    </p> :
-                    <p></p>
+                    </p>
                     }
                 </div>
                 <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
