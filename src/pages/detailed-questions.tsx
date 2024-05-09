@@ -138,6 +138,8 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                                     detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                                     localStorage.setItem("isSignedIn", "true");
                                     setReload(true);
+                                    setAlertDismissed(true);
+                                    setShowCompletionAlert(false);
                                 }
                                 setProcessing(false);
                             });
@@ -156,7 +158,10 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                 <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                 <p className="text-center">
                     <FadeIn key={`${darkMode}`}>
-                        <Button className={`mt-1 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                        <ProgressBar className="w-1/2 mx-auto -mt-8" animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
+                    </FadeIn>    
+                    <FadeIn key={`${darkMode}`}>
+                        <Button className={`mt-3 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                             {processing ? 
                             <Spinner></Spinner> :
                             "Submit Answers"}
@@ -170,6 +175,13 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                     </p>
                 </div>
                 }
+                <Alert className="w-1/2 mx-auto" variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+                    setAlertDismissed(true);
+                    setShowCompletionAlert(false);
+                }} dismissible>
+                    <Alert.Heading>All questions completed!</Alert.Heading>
+                    <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+                </Alert>
                 {resultCreated &&
                 <div className="mb-6">
                     {detailedQuestionsResultsArrayFormatted.map((option, index) => (
@@ -179,14 +191,6 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                 </div>
                 }
             </div>
-            <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-                setAlertDismissed(true);
-                setShowCompletionAlert(false);
-            }} dismissible>
-                <Alert.Heading>All questions completed!</Alert.Heading>
-                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
-            </Alert>
-            <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             <Footer />
         </>
     );
