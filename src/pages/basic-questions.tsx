@@ -145,19 +145,18 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
             <div className="flex-container mw-75 mx-auto mb-24">
                 <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                 <p className="text-center">
-                    <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                    <Button className="mt-1 mb-1" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                         {processing ? 
                         <Spinner></Spinner> :
                         "Submit Answers"}
                     </Button>
                 </p>
-                {showKeyErrorMessage ?
+                {showKeyErrorMessage &&
                 <div className="flex-container">
                     <p className="mx-auto my-auto">
                         <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                     </p>
-                </div> :
-                <p></p>
+                </div>
                 }
                 {resultCreated &&
                 <div className="mb-6">
@@ -169,14 +168,12 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                 }
             </div>
             <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-    setAlertDismissed(true);
-    setShowCompletionAlert(false);
-}} dismissible>
-    <Alert.Heading>All questions completed!</Alert.Heading>
-    <p>
-        You have completed all the questions. Click on "Submit Answers" to proceed.
-    </p>
-</Alert>
+                setAlertDismissed(true);
+                setShowCompletionAlert(false);
+            }} dismissible>
+                <Alert.Heading>All questions completed!</Alert.Heading>
+                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+            </Alert>
             <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             <Footer />
         </>

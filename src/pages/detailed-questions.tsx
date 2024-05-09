@@ -151,49 +151,39 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
     
     return (
         <>
-            <div className="pb-3">
-            </div>
-            <div>
-                <div className="flex-container mw-75 mx-auto">
-                    <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-                </div>
-                <div className="mb-5">
-                    <p className="text-center">
-                        <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
-                            {processing ? 
-                            <Spinner></Spinner> :
-                            "Submit Answers"}
-                        </Button>
+            <div className="flex-container mw-75 mx-auto mb-24">
+                <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
+                <p className="text-center">
+                    <Button className="mt-1 mb-1" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                        {processing ? 
+                        <Spinner></Spinner> :
+                        "Submit Answers"}
+                    </Button>
+                </p>
+                {showKeyErrorMessage &&
+                <div className="flex-container">
+                    <p className="mx-auto my-auto">
+                        <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
                     </p>
-                    {showKeyErrorMessage ?
-                    <div className="flex-container">
-                        <p className="mx-auto my-auto">
-                            <b>Error:</b> Please enter a valid OpenAI API key in the footer below and resubmit the quiz.
-                        </p>
-                    </div> :
-                    <p></p>
-                    }
-                    {resultCreated ?
-                    <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
-                        {detailedQuestionsResultsArrayFormatted.map((option, index) => (
-                            <CareerOptionQuizPages key={index} title={option.title} description={option.description} darkMode={darkMode} />
-                        ))
-                        }
-                    </p> :
-                    <p></p>
+                </div>
+                }
+                {resultCreated &&
+                <div className="mb-6">
+                    {detailedQuestionsResultsArrayFormatted.map((option, index) => (
+                        <CareerOptionQuizPages key={index} title={option.title} description={option.description} darkMode={darkMode} />
+                    ))
                     }
                 </div>
-                <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-    setAlertDismissed(true);
-    setShowCompletionAlert(false);
-}} dismissible>
-    <Alert.Heading>All questions completed!</Alert.Heading>
-    <p>
-        You have completed all the questions. Click on "Submit Answers" to proceed.
-    </p>
-</Alert>
-                    <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
+                }
             </div>
+            <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+                setAlertDismissed(true);
+                setShowCompletionAlert(false);
+            }} dismissible>
+                <Alert.Heading>All questions completed!</Alert.Heading>
+                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+            </Alert>
+            <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             <Footer />
         </>
     );
