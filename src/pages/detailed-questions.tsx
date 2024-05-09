@@ -181,17 +181,16 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                     </p>
                     }
                 </div>
-                <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-    setAlertDismissed(true);
-    setShowCompletionAlert(false);
-}} dismissible>
-    <Alert.Heading>All questions completed!</Alert.Heading>
-    <p>
-        You have completed all the questions. Click on "Submit Answers" to proceed.
-    </p>
-</Alert>
-                    <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
+                }
             </div>
+            <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+                setAlertDismissed(true);
+                setShowCompletionAlert(false);
+            }} dismissible>
+                <Alert.Heading>All questions completed!</Alert.Heading>
+                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+            </Alert>
+            <ProgressBar animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
             <Footer />
         </>
     );
