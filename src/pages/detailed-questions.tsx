@@ -7,6 +7,7 @@ import { CareerOptionInterface } from '../types';
 import { CareerOptionQuizPages } from '../components/CareerOptionQuizPages';
 import { ProgressBar, Alert } from 'react-bootstrap';
 import MultipleChoiceQuestionCard from '../components/MultipleChoiceQuestionCard';
+import FadeIn from '../components/FadeIn';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-3.5-turbo-0125";
@@ -154,11 +155,13 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             <div className="flex-container mw-75 mx-auto mb-24">
                 <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                 <p className="text-center">
-                    <Button className={`mt-1 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
-                        {processing ? 
-                        <Spinner></Spinner> :
-                        "Submit Answers"}
-                    </Button>
+                    <FadeIn key={`${darkMode}`}>
+                        <Button className={`mt-1 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
+                            {processing ? 
+                            <Spinner></Spinner> :
+                            "Submit Answers"}
+                        </Button>
+                    </FadeIn>
                 </p>
                 {showKeyErrorMessage &&
                 <div className="flex-container">
