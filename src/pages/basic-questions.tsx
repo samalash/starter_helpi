@@ -142,10 +142,8 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
 
     return (
         <>
-            <div className="flex-container mw-75 mx-auto">
+            <div className="flex-container mw-75 mx-auto mb-24">
                 <TrueFalseQuestionCard questions={questions} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
-            </div>
-            <div className="mb-5">
                 <p className="text-center">
                     <Button className="mt-5" onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                         {processing ? 
@@ -162,14 +160,13 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                 <p></p>
                 }
                 {resultCreated &&
-                <p className="mw-75 mx-auto border border-primary border-3 rounded p-3">
+                <div className="mb-6">
                     {basicQuestionsResultsArrayFormatted.map((option, index) => (
-                        <CareerOptionQuizPages key={index} title={option.title} description={option.description} />
+                        <CareerOptionQuizPages key={index} title={option.title} description={option.description} darkMode={darkMode} />
                     ))
                     }
-                </p>
+                </div>
                 }
-                
             </div>
             <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
     setAlertDismissed(true);
