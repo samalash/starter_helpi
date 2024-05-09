@@ -164,6 +164,13 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                     </p>
                 </div>
                 }
+                <Alert className="w-1/2 mx-auto" variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+                    setAlertDismissed(true);
+                    setShowCompletionAlert(false);
+                }} dismissible>
+                    <Alert.Heading>All questions completed!</Alert.Heading>
+                    <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+                </Alert>
                 {resultCreated &&
                 <div className="mb-6">
                     {basicQuestionsResultsArrayFormatted.map((option, index) => (
@@ -173,13 +180,6 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                 </div>
                 }
             </div>
-            <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-                setAlertDismissed(true);
-                setShowCompletionAlert(false);
-            }} dismissible>
-                <Alert.Heading>All questions completed!</Alert.Heading>
-                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
-            </Alert>
             <Footer />
         </>
         

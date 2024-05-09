@@ -173,6 +173,13 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                     </p>
                 </div>
                 }
+                <Alert className="w-1/2 mx-auto" variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
+                    setAlertDismissed(true);
+                    setShowCompletionAlert(false);
+                }} dismissible>
+                    <Alert.Heading>All questions completed!</Alert.Heading>
+                    <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
+                </Alert>
                 {resultCreated &&
                 <div className="mb-6">
                     {detailedQuestionsResultsArrayFormatted.map((option, index) => (
@@ -182,13 +189,6 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                 </div>
                 }
             </div>
-            <Alert variant="info" show={showCompletionAlert && !alertDismissed} onClose={() => {
-                setAlertDismissed(true);
-                setShowCompletionAlert(false);
-            }} dismissible>
-                <Alert.Heading>All questions completed!</Alert.Heading>
-                <p>You have completed all the questions. Click on "Submit Answers" to proceed.</p>
-            </Alert>
             <Footer />
         </>
     );
