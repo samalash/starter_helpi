@@ -129,6 +129,8 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                                     basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                                     localStorage.setItem("isSignedIn", "true");
                                     setReload(true);
+                                    setAlertDismissed(true);
+                                    setShowCompletionAlert(false);
                                 }
                                 setProcessing(false);
                             });

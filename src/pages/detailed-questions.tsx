@@ -138,6 +138,8 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                                     detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
                                     localStorage.setItem("isSignedIn", "true");
                                     setReload(true);
+                                    setAlertDismissed(true);
+                                    setShowCompletionAlert(false);
                                 }
                                 setProcessing(false);
                             });
