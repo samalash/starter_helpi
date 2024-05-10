@@ -52,7 +52,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
       <div className="size-full pt-30 pb-20">
         { !isSignedIn ? (
         <div className='pt-56 pb-56'>
-          <FadeIn key={`${darkMode}`}>
+          <FadeIn key={`${darkMode}${"HomeTitleAndDescription"}`}>
             <h1 className="pb-3 text-center">Future Fit</h1>
             <div className="w-50 mx-auto">
               <p>This application is specially designed to help you find your next career prospect. Utilizing artificial intelligence, Future Fit takes in your responses and generates a report of what occupations would best suit you, including job listings so you can find your next career quickly. There are two different quiz types. The basic questions page contains true or false questions and can be completed quickly and with minimal effort. The detailed questions page contains multiple choice questions that can lead to a more accurate result.</p>
@@ -62,7 +62,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
       ) : (
         <div className='flex justify-center'>
         <div className="pt-20 w-2/3">
-          <FadeIn key={`${darkMode}`}>
+          <FadeIn key={`${darkMode}${"SignedInHomeTitleAndBasicReportText"}`}>
             <h1 className="text-center pb-10">Welcome Back!</h1>
             {basicQuestionsResultsArrayFormatted.length > 1 && <h2 className='text-center w-full'>Here is your latest report from your Basic Questions Assessment:</h2>}
           </FadeIn>
@@ -79,7 +79,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
           </div>
           <div className="pt-8"></div>
           <div className="pt-8 pb-8">
-            <FadeIn key={`${darkMode}`}>
+            <FadeIn key={`${darkMode}${"SignedInDetailedReportText"}`}>
               {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2 className='text-center w-full'>Here is your latest report from your Detailed Questions Assessment:</h2>)}
             </FadeIn>
             <div className='pt-8 pb-8'>
@@ -93,14 +93,14 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
                 </div>
               </ol>
             </div>
-            <FadeIn key={`${darkMode}`}>
+            <FadeIn key={`${darkMode}${"SignedInHomeTakeQuizAgainText"}`}>
               <h2 className="pt-32 text-center">Take the quiz again:</h2>
             </FadeIn>
           </div>
         </div>
         </div>
       )}
-      <FadeIn key={`${darkMode}`}>
+      <FadeIn key={`${darkMode}${"SignedInHomeTakeQuizAgainButtons"}`}>
         <div className="pt-2 flex justify-center">
           <Button href="#/basic-questions" variant="dark" style={{backgroundColor: `${darkMode ? "rgb(0,130,192)" : "rgb(0,180,216)"}`, borderStyle: `none`}} className="transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Basic Questions</Button>
           <Button href="#/detailed-questions" variant="dark" style={{backgroundColor: `${darkMode ? "rgb(0,130,192)" : "rgb(0,180,216)"}`, borderStyle: `none`}} className="ml-8 transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110">Detailed Questions</Button>

@@ -151,7 +151,7 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
                     <FadeIn key={`${darkMode}${"BasicProgressBar"}`}>
                         <ProgressBar className="w-1/2 mx-auto -mt-8" animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
                     </FadeIn>    
-                    <FadeIn key={`${darkMode}`}>
+                    <FadeIn key={`${darkMode}${"BasicSubmitButton"}`}>
                         <Button className={`mt-3 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
                             {processing ? 
                             <Spinner></Spinner> :
