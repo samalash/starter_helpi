@@ -157,7 +157,7 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             <div className="flex-container mw-75 mx-auto mb-24">
                 <MultipleChoiceQuestionCard questions={questions} possibleAnswers={possibleAnswers} handleAnswerChange={handleAnswerChange} selectedAnswers={selectedAnswers} darkMode={darkMode} />
                 <p className="text-center">
-                    <FadeIn key={`${darkMode}`}>
+                    <FadeIn key={`${darkMode}${"DetailedProgressBar"}`}>
                         <ProgressBar className="w-1/2 mx-auto -mt-8" animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
                     </FadeIn>    
                     <FadeIn key={`${darkMode}`}>
