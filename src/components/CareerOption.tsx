@@ -4,9 +4,9 @@ import FadeIn from "./FadeIn";
 export const CareerOption = ({ title, description, darkMode }: {title: string, description: string, darkMode: boolean}) => {
   return (
     <>
-      <FadeIn key={`${darkMode}`}>
+      <FadeIn key={`${darkMode}${"CareerOptionOuter"}`}>
       <div className={`p-5 pb-3 shadow-xl rounded-xl ${darkMode ? "bg-[rgb(0,130,192)]" : "bg-[rgb(0,180,216)]"} text-white`}>
-        <FadeIn key={`${darkMode}`}>
+        <FadeIn key={`${darkMode}${"CareerOptionInner"}`}>
           <h3 >{title}</h3>
           <p>{description}</p>
           <h4>Here are some job listings that match this career:</h4>
