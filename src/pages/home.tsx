@@ -66,7 +66,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
             <h1 className="text-center pb-10">Welcome Back!</h1>
             {basicQuestionsResultsArrayFormatted.length > 1 && <h2 className='text-center w-full'>Here is your latest report from your Basic Questions Assessment:</h2>}
           </FadeIn>
-          <div className="pt-8 pb-8">
+          {basicQuestionsResultsArrayFormatted.length > 1 && <div className="pt-8 pb-8">
             <ol>
               <div>
             {basicQuestionsResultsArrayFormatted.map((option, index) => (
@@ -76,9 +76,9 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
             ))}
               </div>
             </ol>
-          </div>
-          <div className="pt-8"></div>
-          <div className="pt-8 pb-8">
+          {basicQuestionsResultsArrayFormatted.length > 1 && detailedQuestionsResultsArrayFormatted.length > 1 && <div className="py-8"></div>}
+          </div>}
+          <div className="pb-8">
             <FadeIn key={`${darkMode}${"SignedInDetailedReportText"}`}>
               {detailedQuestionsResultsArrayFormatted.length > 1 && (<h2 className='text-center w-full'>Here is your latest report from your Detailed Questions Assessment:</h2>)}
             </FadeIn>
