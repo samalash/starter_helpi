@@ -76,7 +76,7 @@ function Home({ reload, darkMode}: { reload: boolean, darkMode: boolean}) {
             ))}
               </div>
             </ol>
-          <div className="py-8"></div>
+          {basicQuestionsResultsArrayFormatted.length > 1 && detailedQuestionsResultsArrayFormatted.length > 1 && <div className="py-8"></div>}
           </div>}
           <div className="pb-8">
             <FadeIn key={`${darkMode}${"SignedInDetailedReportText"}`}>
