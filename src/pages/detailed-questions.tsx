@@ -10,7 +10,7 @@ import MultipleChoiceQuestionCard from '../components/MultipleChoiceQuestionCard
 import FadeIn from '../components/FadeIn';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
-const gptModel:string = "gpt-3.5-turbo-0125";
+const gptModel:string = "gpt-4-turbo";
 let openaiKeyValid:boolean = false;
 
 async function testResponse():Promise<void> {

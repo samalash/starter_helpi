@@ -10,7 +10,7 @@ import TrueFalseQuestionCard from '../components/TrueFalseQuestionCard';
 import FadeIn from '../components/FadeIn';
 
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
-const gptModel:string = "gpt-3.5-turbo-0125";
+const gptModel:string = "gpt-4-turbo";
 let openaiKeyValid:boolean = false;
 
 async function testResponse():Promise<void> {
@@ -61,7 +61,7 @@ async function generateResponse(prompt:string):Promise<string> {
             { role: "user", content: "I am a user that took the questionaire and will provide my answers to the questionnaire for you to analyze and make 3 career recommendations." },
             { role: "user", content: prompt }
         ],
-        model: "gpt-3.5-turbo-0125",
+        model: gptModel,
     });
     return response?.choices[0].message.content ?? "Error generating message!";
 }
