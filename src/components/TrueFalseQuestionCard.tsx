@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
 function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, darkMode}: {questions: string[], handleAnswerChange:(index:number,answer:string) => void, selectedAnswers: string[], darkMode: boolean}){
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0); //State variable to keep track of the current question index
 
     const handleNext = () => {
         if (currentIndex < questions.length-1){
