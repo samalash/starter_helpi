@@ -92,8 +92,8 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
     const [showKeyErrorMessage, setShowKeyErrorMessage] = useState<boolean>(false);
-    const [showCompletionAlert, setShowCompletionAlert] = useState<boolean>(false);
-    const [alertDismissed, setAlertDismissed] = useState<boolean>(false);
+    const [showCompletionAlert, setShowCompletionAlert] = useState<boolean>(false); // Show the alert when all questions are answered
+    const [alertDismissed, setAlertDismissed] = useState<boolean>(false); // Dismiss the alert after it is closed
 
     useEffect(() => {
         // Check if all questions have been answered
