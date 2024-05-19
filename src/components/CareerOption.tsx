@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import FadeIn from "./FadeIn";
 
-//CareerOption component
+// CareerOption component that takes in a title, description, and darkMode prop
 export const CareerOption = ({ title, description, darkMode }: {title: string, description: string, darkMode: boolean}) => {
   return (
     <>

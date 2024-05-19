@@ -1,5 +1,6 @@
 import FadeIn from './FadeIn';
 
+// CareerOptionQuizPages component that takes in a title, description, and darkMode prop
 export const CareerOptionQuizPages = (props: { title: string, description: string, darkMode: boolean}) => {
   return (
     <div className='flex justify-center'>

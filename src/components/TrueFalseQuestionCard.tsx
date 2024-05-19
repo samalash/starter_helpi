@@ -2,21 +2,24 @@ import FadeIn from './FadeIn';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
+// TrueFalseQuestionCard component that takes in questions, handleAnswerChange, selectedAnswers, and darkMode props
 function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, darkMode}: {questions: string[], handleAnswerChange:(index:number,answer:string) => void, selectedAnswers: string[], darkMode: boolean}){
     const [currentIndex, setCurrentIndex] = useState(0); //State variable to keep track of the current question index
 
+    // Function to handle the next button
     const handleNext = () => {
         if (currentIndex < questions.length-1){
             setCurrentIndex(currentIndex+1);
         }
     }
 
+    // Function to handle the previous button
     const handlePrevious = () => {
         if (currentIndex > 0){
             setCurrentIndex(currentIndex-1);
         }
     }
-    
+
     return (
         <div className='flex justify-center'>
             <div className="pt-36 pb-8 w-1/2">
@@ -31,7 +34,7 @@ function TrueFalseQuestionCard({questions, handleAnswerChange, selectedAnswers, 
                                 }
                                 True
                             </label>
-                            
+
                             <label className="form-check-label ml-10">
                                 {selectedAnswers[currentIndex] === "False" ?
                                 <input className="form-check-input mr-2" type="radio" name={"TrueFalseChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,"False");}} checked /> :
