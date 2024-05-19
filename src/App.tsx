@@ -3,7 +3,7 @@ import Home from './pages/home';
 import BasicQuestionsPage from './pages/basic-questions';
 import DetailedQuestionsPage from './pages/detailed-questions';
 import { useEffect, useState } from 'react';
-import ThemeWrapper from './components/ThemWrapper';
+import ThemeWrapper from './components/ThemeWrapper';
 import Header from './components/Header';
 
 
