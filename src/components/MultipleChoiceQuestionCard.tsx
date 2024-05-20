@@ -3,15 +3,18 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
 
+// MultipleChoiceQuestionCard component that takes in questions, possibleAnswers, handleAnswerChange, selectedAnswers, and darkMode props
 function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerChange, selectedAnswers, darkMode}: {questions: string[], possibleAnswers: string[][], handleAnswerChange:(index:number,answer:string) => void, selectedAnswers: string[], darkMode: boolean}) {
     const [currentIndex, setCurrentIndex] = useState(0); // State variable to keep track of the current question index
 
+    // Function to handle the next button
     const handleNext = () => {
         if (currentIndex < questions.length-1){
             setCurrentIndex(currentIndex+1);
         }
     }
 
+    // Function to handle the previous button
     const handlePrevious = () => {
         if (currentIndex > 0){
             setCurrentIndex(currentIndex-1);
@@ -32,7 +35,7 @@ function MultipleChoiceQuestionCard({questions, possibleAnswers, handleAnswerCha
                                 }
                                 {possibleAnswers[currentIndex][0]}
                             </label>
-                            
+
                             <label className="form-check-label ml-10">
                                 {selectedAnswers[currentIndex] === possibleAnswers[currentIndex][1] ?
                                 <input className="form-check-input mr-2" type="radio" name={"MultipleChoice"} key={currentIndex} onChange={() => {handleAnswerChange(currentIndex,possibleAnswers[currentIndex][1]);}} checked /> :

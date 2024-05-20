@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 
+// FadeIn component that takes in children
 export default function FadeIn({ children }: { children: React.ReactNode }) {
+  // useRef hook to create a reference to the element
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
+  // Return a section element with a span element that contains the children
   return (
     <section ref={ref}>
       <span

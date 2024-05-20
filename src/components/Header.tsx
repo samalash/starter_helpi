@@ -2,7 +2,6 @@ import { Button} from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-//Header component
 function Header({setDarkMode, darkMode}: {setDarkMode: (value: boolean) => void, darkMode: boolean}){
   const isSignedIn = localStorage.getItem("isSignedIn") === "true";
 

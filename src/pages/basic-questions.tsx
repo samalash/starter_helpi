@@ -9,10 +9,12 @@ import { ProgressBar, Alert } from 'react-bootstrap';
 import TrueFalseQuestionCard from '../components/TrueFalseQuestionCard';
 import FadeIn from '../components/FadeIn';
 
+// Initialize OpenAI API
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-4o";
 let openaiKeyValid:boolean = false;
 
+// Test the OpenAI API key
 async function testResponse():Promise<void> {
     if (!openai || localStorage.getItem("MYKEY") === null) {
         openaiKeyValid = false;
@@ -35,9 +37,11 @@ async function testResponse():Promise<void> {
     console.log("OpenAI API key is valid.");
 }
 
+// Initialize the basic questions results
 let basicQuestionsResults = "";
 let basicQuestionsResultsArray:string[] = [];
 
+// Parse the career option string into a CareerOptionInterface object
 function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
@@ -53,7 +57,7 @@ let basicQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 
 
 
-
+// Generate a templated response from the OpenAI API
 async function generateResponse(prompt:string):Promise<string> {
     const response = await openai?.chat.completions.create({
         messages: [
@@ -66,7 +70,7 @@ async function generateResponse(prompt:string):Promise<string> {
     return response?.choices[0].message.content ?? "Error generating message!";
 }
 
-
+// Questions for the basic questions page
 const questions:string[] = [
     "You prefer a structured and organized work environment with clear guidelines.", 
     "You're more interested in practical, hands-on tasks than theoretical concepts.",
@@ -78,6 +82,7 @@ const questions:string[] = [
 ];
 
 function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
+    // State variables
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
@@ -93,42 +98,67 @@ function BasicQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) 
         } else if (selectedAnswers.includes("") && showCompletionAlert) {
             setShowCompletionAlert(false);
         }
-    }, [selectedAnswers, showCompletionAlert]);
+    }, [selectedAnswers, showCompletionAlert]); // Update when selectedAnswers or showCompletionAlert changes
 
+    // Handle the change in answers
     const handleAnswerChange = (index:number, answer:string) => {
         setSelectedAnswers(selectedAnswers.map((value, i) => i === index ? answer : value));
     }
 
     const handleQuizSubmit = () =>{
+        // Check if all questions have been answered
         if (!selectedAnswers.includes("")){
             setProcessing(true);
+
+            // Test the OpenAI API key
             testResponse().then(() => {
                 if (!openaiKeyValid) {
                     setShowKeyErrorMessage(true);
                     setProcessing(false);
                 } else {
+                    // Create the list of questions and answers
                     const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
                     console.log(questionsAndAnswersString);
                     localStorage.setItem("basic-questions-answers", questionsAndAnswersString);
+
+                    // Generate the list prompt
                     const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
                     console.log(listPromptString);
+
+                    // Generate the list of jobs
                     generateResponse(listPromptString).then((listPromptResponse) => {
                         console.log(listPromptResponse);
+
                         if (listPromptResponse !== "Error generating message!"){
+                            // Store the list of jobs
                             localStorage.setItem("basic-questions-list-jobs", listPromptResponse);
+
+                            // Generate the report prompt
                             const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("basic-questions-list-jobs") + "\n\nFor each career recommendation, surround it with two asterisks on each side and follow it with a \":\" symbol (For example: \"1. **Technician**:\") and then provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
+
+                            // Generate the report
                             generateResponse(reportPromptString).then((reportPromptResponse) => {
                                 console.log(reportPromptResponse);
+
                                 if (reportPromptResponse !== "Error generating message!"){
+                                    // Store the report
                                     localStorage.setItem("basic-questions-paragraph-report", reportPromptResponse);
+
+                                    // Set the result created flag
                                     setResultCreated(true);
+
+                                    // Parse the results into an array of CareerOptionInterface objects
                                     basicQuestionsResults = localStorage.getItem("basic-questions-paragraph-report") ?? "";
                                     basicQuestionsResultsArray = basicQuestionsResults.split(/\d+\./);
                                     basicQuestionsResultsArray.shift();
                                     basicQuestionsResultsArrayFormatted = [];
                                     basicQuestionsResultsArray.map((value) => basicQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
+                                    // Set the user as signed in
                                     localStorage.setItem("isSignedIn", "true");
                                     setReload(true);
+
+                                    // Reset the state variables governing the alerts
                                     setAlertDismissed(true);
                                     setShowCompletionAlert(false);
                                 }

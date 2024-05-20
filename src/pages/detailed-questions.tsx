@@ -9,10 +9,12 @@ import { ProgressBar, Alert } from 'react-bootstrap';
 import MultipleChoiceQuestionCard from '../components/MultipleChoiceQuestionCard';
 import FadeIn from '../components/FadeIn';
 
+// Initialize OpenAI API
 const openai = localStorage.getItem("MYKEY") !== null ? new OpenAI({apiKey: localStorage.getItem("MYKEY")?.substring(1, (localStorage.getItem("MYKEY") ?? "").length - 1) ?? undefined, dangerouslyAllowBrowser: true}) : null;
 const gptModel:string = "gpt-4o";
 let openaiKeyValid:boolean = false;
 
+// Test the OpenAI API key
 async function testResponse():Promise<void> {
     if (!openai || localStorage.getItem("MYKEY") === null) {
         openaiKeyValid = false;
@@ -35,10 +37,11 @@ async function testResponse():Promise<void> {
     console.log("OpenAI API key is valid.");
 }
 
+// Initalize the detailed questions results
 let detailedQuestionsResults = "";
 let detailedQuestionsResultsArray:string[] = [];
 
-
+// Parse the career option string into a CareerOptionInterface object
 function parseCareerOption(optionString: string): CareerOptionInterface {
   const splitString = optionString.split(':'); // Split the string by ':'
   const title = splitString[0].trim().replace(/\*\*/g, ''); // Extract and clean up the title
@@ -54,7 +57,7 @@ let detailedQuestionsResultsArrayFormatted: CareerOptionInterface[]= [];
 
 
 
-
+// Generate a templated response from the OpenAI API
 async function generateResponse(prompt:string):Promise<string> {
     const response = await openai?.chat.completions.create({
         messages: [
@@ -67,6 +70,7 @@ async function generateResponse(prompt:string):Promise<string> {
     return response?.choices[0].message.content ?? "Error generating message!";
 }
 
+// Questions for the detailed career quiz
 const questions:string[] = [
     "What are your primary interests and hobbies?", 
     "Which of the following would you say are your strongest skills or talents?",
@@ -77,6 +81,7 @@ const questions:string[] = [
     "What role do you typically take in group settings?"
 ];
 
+// Possible answers for the detailed career quiz
 const possibleAnswers:string[][] = [
     ["Art and creativity", "Technology and innovation", "Nature and outdoor activities", "Helping others and social activities"],
     ["Analytical and problem-solving", "Creative and imaginative", "Communication and interpersonal", "Practical and hands-on"],
@@ -88,6 +93,7 @@ const possibleAnswers:string[][] = [
 ];
 
 function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolean) => void, darkMode: boolean}) {
+    // State variables
     const [selectedAnswers, setSelectedAnswers] = useState<string[]>(Array(questions.length).fill(""));
     const [processing, setProcessing] = useState<boolean>(false);
     const [resultCreated, setResultCreated] = useState<boolean>(false);
@@ -102,42 +108,67 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
         } else if (selectedAnswers.includes("") && showCompletionAlert) {
             setShowCompletionAlert(false);
         }
-    }, [selectedAnswers, showCompletionAlert]);
+    }, [selectedAnswers, showCompletionAlert]); // Update when selectedAnswers or showCompletionAlert changes
 
+    // Handle the change in answers
     const handleAnswerChange = (index:number, answer:string) => {
         setSelectedAnswers((prev) => prev.map((value, i) => i === index ? answer : value));
     }
-    
+
     const handleQuizSubmit = () =>{
+        // Check if all questions have been answered
         if (!selectedAnswers.includes("")){
             setProcessing(true);
+
+            // Test the OpenAI API key
             testResponse().then(() => {
                 if (!openaiKeyValid) {
                     setShowKeyErrorMessage(true);
                     setProcessing(false);
                 } else {
+                    // Create the list of questions and answers
                     const questionsAndAnswersString:string = questions.map((question:string, index:number):string => index + 1 + ". " + question + "\n" + selectedAnswers[index]).join("\n\n");
                     console.log(questionsAndAnswersString);
                     localStorage.setItem("detailed-questions-answers", questionsAndAnswersString);
+
+                    // Generate the list prompt
                     const listPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, as a numbered list with the most recommended career as the first one and without any explanations or other punctuation, what are the top 3 career recommendations for this user?";
                     console.log(listPromptString);
+
+                    // Generate the list of jobs
                     generateResponse(listPromptString).then((listPromptResponse) => {
                         console.log(listPromptResponse);
+
                         if (listPromptResponse !== "Error generating message!"){
+                            // Store the list of jobs
                             localStorage.setItem("detailed-questions-list-jobs", listPromptResponse);
+
+                            // Generate the report prompt
                             const reportPromptString:string = "Here are the answers to the career-based questionnaire:\n\n" + questionsAndAnswersString + "\n\nBased on these answers, you have already provided these 3 career recommendations with the most recommended career as the first one:\n\n" + localStorage.getItem("detailed-questions-list-jobs") + "\n\nFor each career recommendation, surround it with two asterisks on each side and follow it with a \":\" symbol (For example: \"1. **Technician**:\") and then provide a one paragraph explanation, based on the questionnaire answers, of why this career is a good fit for the user.";
+
+                            // Generate the report
                             generateResponse(reportPromptString).then((reportPromptResponse) => {
                                 console.log(reportPromptResponse);
+
                                 if (reportPromptResponse !== "Error generating message!"){
+                                    // Store the report
                                     localStorage.setItem("detailed-questions-paragraph-report", reportPromptResponse);
+
+                                    // Set the result created flag
                                     setResultCreated(true);
+
+                                    // Parse the report into an array of CareerOptionInterface objects
                                     detailedQuestionsResults = localStorage.getItem("detailed-questions-paragraph-report") ?? "";
                                     detailedQuestionsResultsArray = detailedQuestionsResults.split(/\d+\./);
                                     detailedQuestionsResultsArray.shift();
                                     detailedQuestionsResultsArrayFormatted = [];
                                     detailedQuestionsResultsArray.map((value) => detailedQuestionsResultsArrayFormatted.push(parseCareerOption(value)));
+
+                                    // Set the user as signed in
                                     localStorage.setItem("isSignedIn", "true");
                                     setReload(true);
+
+                                    // Reset the state variables governing the alerts
                                     setAlertDismissed(true);
                                     setShowCompletionAlert(false);
                                 }
@@ -151,7 +182,7 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
             });
         }
     }
-    
+
     return (
         <>
             <div className="flex-container mw-75 mx-auto mb-24">
@@ -159,10 +190,10 @@ function DetailedQuestionsPage({setReload, darkMode}: {setReload: (value: boolea
                 <p className="text-center">
                     <FadeIn key={`${darkMode}${"DetailedProgressBar"}`}>
                         <ProgressBar className="w-1/2 mx-auto -mt-8" animated now={selectedAnswers.filter(answer => answer !== "").length / questions.length * 100} />
-                    </FadeIn>    
+                    </FadeIn>
                     <FadeIn key={`${darkMode}${"DetailedSubmitButton"}`}>
                         <Button className={`mt-3 mb-1 border-0 shadow-xl rounded-xl ${darkMode ? "bg-gradient-to-r from-[#0082C0] to-blue-700" : "bg-gradient-to-r from-[#00B4D8] to-[#0082C0]"} transition ease-in-out hover:-translate-y-1 hover:scale-125 duration-300 scale-110`} onClick={handleQuizSubmit} disabled={processing || selectedAnswers.includes("")}>
-                            {processing ? 
+                            {processing ?
                             <Spinner></Spinner> :
                             "Submit Answers"}
                         </Button>
